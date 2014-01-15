@@ -1,0 +1,64 @@
+Data Models for KidReads
+
+User
+  user_type_id
+  username
+  email
+  first_name
+  last_name (only initial if Kid)
+  city
+  state
+  country
+  birthday
+  password_digest
+  points (based on # pages read * readingLevel / gradeLevel)
+
+UserType (kid, parent, teacher, admin)
+  label
+  description
+
+Club
+  founder_id
+  club_name
+  club_type_id
+
+ClubType (classroom, family)
+  label
+  description
+
+ClubMembership
+  member_id
+  club_id
+  membership_type_id
+
+ClubMembershipType (founder, kid_member, adult_member)
+  label
+  description
+
+ClubComment
+  commenter_id
+  parent_comment_id
+  body
+
+Review
+  book_id
+  user_id
+  rating
+  review
+
+BookStatus
+  user_id
+  book_id
+  status: (wish, current, read)
+
+Book
+  --> accessed through GoodReads API
+  isbn
+  title
+  author
+  pub_year
+  genre
+  num_pages
+  --> might have to be scraped from Scholastic website
+  reading_level
+

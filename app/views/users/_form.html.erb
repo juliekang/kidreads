@@ -1,0 +1,65 @@
+<% action = (user.persisted? ? user_url(user) : users_url) %>
+<% method = (user.persisted? ? "put" : "post") %>
+<% message = (user.persisted? ? "Update user" : "Create user") %>
+
+<form action="<%= action %>" method="post">
+  <input
+     name="_method"
+     type="hidden"
+     value="<%= method %>">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="user_usertype">Type of Account</label>
+  <br/>
+  <br/>
+  <% @user_types.each do |type| %>
+    <input name="user[user_type_id]" 
+           value="<%= type.label %>"
+           id="user_usertype<%= type.id %>"
+           type="radio"><%= type.label %>
+    <br/>
+    <%= type.description %>
+    <br/>
+    <br/>
+  <% end %>
+
+  <label for="user_username">Username</label>
+  <input
+     id="user_username"
+     name="user[username]"
+     type="text">
+  <br>
+
+  <label for="user_password">Password</label>
+  <input
+     id="user_password"
+     name="user[password]"
+     type="password">
+  <br>
+
+  <label for="user_email">Email Address</label>
+  <input
+     id="user_email"
+     name="user[email]"
+     type="text">
+  <br>
+
+  <label for="user_first_name">First Name</label>
+  <input
+     id="user_first_name"
+     name="user[first_name]"
+     type="text">
+  <br>
+
+  <label for="user_last_name">Last Name (initial only for kids!)</label>
+  <input
+     id="user_last_name"
+     name="user[last_name]"
+     type="text">
+  <br>  
+
+  <input type="submit" value="<%= message %>">
+</form>
