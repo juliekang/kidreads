@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
 gem 'rails', '3.2.15'
 gem 'backbone-on-rails'
-# gem 'Jbuilder'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
