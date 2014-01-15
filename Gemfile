@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.15'
 gem 'backbone-on-rails'
-gem 'jbuilder'
+gem 'Jbuilder'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -10,6 +10,7 @@ gem 'jbuilder'
 gem 'pg'
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'rails_12factor', group: :production
 
 gem "annotate", "~> 2.6.1"
 
