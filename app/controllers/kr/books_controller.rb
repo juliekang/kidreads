@@ -1,6 +1,11 @@
-class Api::BooksController < ApplicationController
+class Kr::BooksController < ApplicationController
   respond_to :json, :html
   before_filter :require_current_user!, :only => [:index, :create, :update]
+
+  def index
+    @books = Book.all
+    render :json => @books
+  end
 
   def create
     @book = Book.new(params[:book]);
@@ -13,7 +18,7 @@ class Api::BooksController < ApplicationController
   end
 
   def show
-    @book = current_user.books.find
+    @book = Book.find(params[:id])
   end
 
   def update

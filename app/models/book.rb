@@ -15,7 +15,10 @@
 #
 
 class Book < ActiveRecord::Base
-  attr_accessible :title, :author
+  attr_accessible :title, :author, :isbn, :pub_year, :genre, :num_pages, :reading_level
+
+  validates :title, :author, :presence => true
+  validates :isbn, :uniqueness => true
 
   has_many :reviews
 end

@@ -1,4 +1,4 @@
-class Api::ReviewsController < ApplicationController
+class Kr::ReviewsController < ApplicationController
   def create
   end
 

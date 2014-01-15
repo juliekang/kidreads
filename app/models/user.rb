@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   validates :password, :length => { :minimum => 6, :allow_nil => true }
   validates :session_token, :presence => true
   validates :username, :user_type_id, :email, :first_name, :last_name, :presence => true
+  validates :username, :email, :uniqueness => true
 
   after_initialize :ensure_session_token
 

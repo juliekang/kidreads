@@ -1,0 +1,9 @@
+<h1>All Books</h1>
+
+<ul id="book_list">
+  <% books.forEach(function (book) {%>
+    <li><a href="#"><%= book.get('title') %></a></li>
+  <% }); %>
+</ul>
+<br/>
+<a href="/books/new">Enter a New Book</a>

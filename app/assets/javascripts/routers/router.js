@@ -4,7 +4,7 @@ KR.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "books"     : "booksIndex",
+    ""     : "booksIndex",
     "books/:id" : "bookShow"
   },
 
