@@ -1,0 +1,28 @@
+<!-- Buttons -->
+
+<button id="new-book-button" class="btn btn-primary" data-toggle="modal" data-target="#new-book-modal">Enter a New Book</button>
+
+
+
+
+
+
+
+<!-- Modals -->
+
+<div id="new-book-modal" class="modal fade">
+<%= render "layouts/modal_header" %>
+  <div class="modal-body">
+    <%= render "books/new" %>
+  </div>
+<%= render "layouts/modal_footer" %>
+
+<!-- Submit Scripts -->
+
+<script type="text/javascript">
+  $('#new-book-form').on('submit', function (event) {
+    var book = $(event.target.form).serializeJSON();
+    KR.books.create(book);
+    console.log(book);
+  });
+</script>

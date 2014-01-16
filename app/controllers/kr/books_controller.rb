@@ -1,6 +1,6 @@
 class Kr::BooksController < ApplicationController
   respond_to :json, :html
-  before_filter :require_current_user!, :only => [:index, :create, :update]
+  before_filter :require_current_user!, :only => [:create, :update]
 
   def index
     @books = Book.all
@@ -11,7 +11,7 @@ class Kr::BooksController < ApplicationController
     @book = Book.new(params[:book]);
 
     if @book.save
-      render :json => @book
+      redirect_to book_url(@book);
     else
       render :json => @book.errors.full_messages, :status => 422
     end
@@ -21,6 +21,4 @@ class Kr::BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-  def update
-  end
 end

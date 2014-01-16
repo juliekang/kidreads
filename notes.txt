@@ -1,0 +1,6 @@
+<script type="text/javascript">
+  $('form.new_book').on('submit', function (event) {
+    var book = $(event.target.form).serializeJSON();
+    KR.books.create(book);
+  });
+</script>

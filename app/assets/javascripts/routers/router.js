@@ -1,12 +1,10 @@
 KR.Routers.Router = Backbone.Router.extend({
   initialize: function(object) {
-    KR.books = new KR.Collections.Books();
-    KR.fetch();
     this.$rootEl = object.$rootEl;
   },
 
   routes: {
-    ""     : "booksIndex",
+    "" : "booksIndex",
     "books/:id" : "bookShow"
   },
 
