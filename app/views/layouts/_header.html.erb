@@ -1,4 +1,9 @@
+<!-- Buttons -->
+
+<button id="new-account-button" class="btn btn-primary">Create Account</button>
 <button id="account-settings-button" class="btn btn-primary" data-toggle="modal" data-target="#account-settings-modal">My Account</button>
+
+<!-- Modals -->
 
 <div id="account-settings-modal" class="modal fade">
 <%= render "layouts/modal_header" %>
@@ -6,3 +11,12 @@
         <p>User Update Form Goes Here</p>
       </div>
 <%= render "layouts/modal_footer" %>
+
+
+<!-- Submits -->
+
+<script>
+  $('#new-account-button').click(function() {
+   window.location = "/users/new";
+});
+</script>

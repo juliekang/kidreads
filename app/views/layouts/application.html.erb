@@ -9,6 +9,7 @@
   <body>
 
     <%= render "layouts/header" %>
+    <br/>
 
     <% if !current_user.nil? %>
       <ul>
@@ -19,6 +20,9 @@
 
     <%= yield %>
 
+    <br/>
+    <br/>
+    <br/>
     <%= render "layouts/footer" %>
 
   </body>
