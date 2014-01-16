@@ -12,6 +12,9 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'rails_12factor', group: :production
 
+gem 'figaro'
+gem 'cancan'
+
 gem "annotate", "~> 2.6.1"
 
 # Gems used only for assets and not required

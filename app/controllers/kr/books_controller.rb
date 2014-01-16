@@ -1,6 +1,6 @@
 class Kr::BooksController < ApplicationController
   respond_to :json, :html
-  before_filter :require_current_user!, :only => [:create, :update]
+  before_filter :require_current_user!
 
   def index
     @books = Book.all

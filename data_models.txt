@@ -36,6 +36,7 @@ ClubMembershipType (founder, kid_member, adult_member)
   description
 
 ClubComment
+  club_id
   commenter_id
   parent_comment_id
   body

@@ -21,4 +21,6 @@ class Book < ActiveRecord::Base
   validates :isbn, :uniqueness => true
 
   has_many :reviews
+  has_many :book_statuses
+  has_many :users, :through => :book_statuses
 end

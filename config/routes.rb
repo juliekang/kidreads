@@ -1,4 +1,6 @@
 Kidreads::Application.routes.draw do
+  root :to => "root#root"
+
   resources :users
   resource :session, :only => [:new, :create, :destroy]
 
@@ -7,5 +9,4 @@ Kidreads::Application.routes.draw do
     resources :reviews
   end
 
-  root :to => "root#root"
 end

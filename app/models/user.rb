@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_many :reviews
+  has_many :book_statuses
+  has_many :books, :through => :book_statuses
   belongs_to :user_type
 
   def self.find_by_credentials(username, password)
