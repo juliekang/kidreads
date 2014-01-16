@@ -12,6 +12,7 @@
 #  state           :string(255)
 #  birthday        :date
 #  password_digest :string(255)      not null
+#  session_token   :string(255)
 #  points          :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

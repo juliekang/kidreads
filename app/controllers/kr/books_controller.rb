@@ -1,7 +1,7 @@
 class Kr::BooksController < ApplicationController
   respond_to :json, :html
   before_filter :require_current_user!
-  load_and_authorize_resource
+  
 
   def index
     @books = Book.all

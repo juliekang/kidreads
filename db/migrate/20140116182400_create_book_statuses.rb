@@ -7,8 +7,6 @@ class CreateBookStatuses < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :book_statuses, :user_id
-    add_index :book_statuses, :book_id
     add_index :book_statuses, :status
     add_index :book_statuses, [:user_id, :book_id], :unique => true
   end

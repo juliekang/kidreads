@@ -12,13 +12,15 @@
 #  state           :string(255)
 #  birthday        :date
 #  password_digest :string(255)      not null
+#  session_token   :string(255)
 #  points          :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :username, :user_type_id, :password, :email, :first_name, :last_name
+  attr_accessible :username, :user_type_id, :password, :email, :first_name, :last_name,
+                  :city, :state, :birthday
   attr_reader :password
 
   validates :password_digest, :presence => { :message => "Password can't be blank" }
