@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115042741) do
+ActiveRecord::Schema.define(:version => 20140116182400) do
+
+  create_table "book_statuses", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "book_id",    :null => false
+    t.string   "status",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "book_statuses", ["book_id"], :name => "index_book_statuses_on_book_id"
+  add_index "book_statuses", ["status"], :name => "index_book_statuses_on_status"
+  add_index "book_statuses", ["user_id", "book_id"], :name => "index_book_statuses_on_user_id_and_book_id", :unique => true
+  add_index "book_statuses", ["user_id"], :name => "index_book_statuses_on_user_id"
 
   create_table "books", :force => true do |t|
     t.string   "isbn"

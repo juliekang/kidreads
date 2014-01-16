@@ -12,6 +12,7 @@ ut2 = UserType.create(label: "Parent",
         description: "Parents can create Reading Families as well as monitor their kids' progress.")
 ut3 = UserType.create(label: "Teacher", 
         description: "Teachers can create classrooms and monitor all their students' progress.")
+ut4 = UserType.create(label: "Admin", description: "Superuser ability.")
 
 b1 = Book.create(isbn: '1596433590', title: "Boxers", author: 'Gene Luen Yang',
                  pub_year: 2013, genre: 'Graphic Novels', num_pages: 325, 
