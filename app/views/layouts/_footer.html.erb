@@ -1,7 +1,7 @@
 <!-- Buttons -->
 
 <button id="new-book-button" class="btn btn-primary" data-toggle="modal" data-target="#new-book-modal">Enter a New Book</button>
-<button id="new-club-button" class="btn btn-primary" data-toggle="modal" data-target="#new-club-modal">Make a New Club</button>
+<button id="my-books-button" class="btn btn-primary">My Books</button>
 
 
 
@@ -24,5 +24,8 @@
     var book = $(event.target.form).serializeJSON();
     KR.books.create(book);
     console.log(book);
+  });
+  $('#my-books-button').click(function () {
+    window.location = "/#books";
   });
 </script>

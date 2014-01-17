@@ -1,7 +1,7 @@
 <!-- Buttons -->
 
 <button id="new-account-button" class="btn btn-primary">Create Account</button>
-<button id="account-settings-button" class="btn btn-primary" data-toggle="modal" data-target="#account-settings-modal">My Account</button>
+<button id="sign-in-button" class="btn btn-primary">Sign In</button>
 
 <!-- Modals -->
 
@@ -18,5 +18,8 @@
 <script>
   $('#new-account-button').click(function() {
    window.location = "/users/new";
-});
+  });
+  $('#sign-in-button').click(function() {
+    window.location = "/session/new";
+  })
 </script>
