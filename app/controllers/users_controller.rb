@@ -7,9 +7,9 @@ class UsersController < ApplicationController
 
     if @user.save
       self.current_user = @user
-      redirect_to user_url(@user)
+      render :json => @user
     else
-      render :json => @user.errors.full_messages
+      render :json => @user.errors.full_messages, :status => 422
     end
   end
 
@@ -21,10 +21,16 @@ class UsersController < ApplicationController
   def show
     if params.include?(:id)
       @user = User.find(params[:id])
-      render :json => @user
+      render :json => @user, :only => [:id, :username]
     else
-      render :json => current_user
+      render :json => current_user, :only => [:id, :username]
     end
+  end
+
+  def index
+    @users = User.all
+
+    render :json => @users
   end
 
   def update

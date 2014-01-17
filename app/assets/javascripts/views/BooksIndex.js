@@ -1,5 +1,6 @@
 KR.Views.BooksIndex = Backbone.View.extend({
-  events: {},
+  events: {
+  },
 
   template: JST["books/index"],
 
@@ -8,10 +9,17 @@ KR.Views.BooksIndex = Backbone.View.extend({
   },
 
   render: function () {
-    var renderedContent = this.template({
-      books: this.collection
-    });
+    var renderedContent = this.template();
+    var that = this;
+
     this.$el.html(renderedContent);
+
+    this.collection.each(function (book) {
+      var view = new KR.Views.BookListItem({
+        model: book
+      });
+      that.$el.find('#book_list').append(view.render().$el);
+    });
 
     return this;
   }

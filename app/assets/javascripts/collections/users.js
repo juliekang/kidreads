@@ -1,3 +1,4 @@
 KR.Collections.Users = Backbone.Collection.extend({
-  model: KR.Models.Users
+  url: "/users",
+  model: KR.Models.User
 });

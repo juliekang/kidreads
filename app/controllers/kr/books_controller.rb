@@ -4,7 +4,7 @@ class Kr::BooksController < ApplicationController
   
 
   def index
-    @books = Book.all
+    @books = current_user.books
     render :json => @books
   end
 
@@ -20,6 +20,7 @@ class Kr::BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    render :json => @book
   end
 
 end

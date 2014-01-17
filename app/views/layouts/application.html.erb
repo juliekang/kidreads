@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <script>$(function () { KR.libraryKey="<%= ENV['LIBRARY_KEY'] %>" })</script>
   </head>
   <body>
 
@@ -16,9 +17,6 @@
         <li><%= button_to "Logout", session_url, :method => :delete %></li>
       </ul>
     <% end %>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
     <%= yield %>
 

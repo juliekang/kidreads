@@ -1,11 +1,11 @@
-KR.Views.BookShow = Backbone.View.extend({
+KR.Views.UserShow = Backbone.View.extend({
   events: {},
   
-  template: JST["books/show"],
+  template: JST["users/show"],
 
   render: function () {
     var renderedContent = this.template({
-      book: this.model
+      user: this.model
     });
     this.$el.html(renderedContent);
     return this;

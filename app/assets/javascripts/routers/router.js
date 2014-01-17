@@ -4,8 +4,9 @@ KR.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "" : "booksIndex",
-    "books/:id" : "bookShow"
+    "books" : "booksIndex",
+    "books/:id" : "bookShow",
+    "users/:id" : "userShow"
   },
 
   booksIndex: function () {
@@ -15,10 +16,26 @@ KR.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
+  bookListItem: function (bookId) {
+    var book = KR.books.get(bookId);
+    var view = new KR.Views.BookListItem({
+      model: book
+    });
+    this._swapView(view);
+  }, 
+
   bookShow: function(bookId) {
     var book = KR.books.get(bookId);
     var view = new KR.Views.BookShow({
       model: book
+    });
+    this._swapView(view);
+  },
+
+  userShow: function(userId) {
+    var user = KR.users.get(userId);
+    var view = new KR.Views.UserShow({
+      model: user
     });
     this._swapView(view);
   },
