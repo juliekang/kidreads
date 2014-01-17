@@ -92,12 +92,12 @@ b4 = Book.create!(isbn: '0545165822', title: "Stir It Up",
 # #  created_at :datetime         not null
 # #  updated_at :datetime         not null
 
-bs1 = BookStatus.create!(user_id: 3, book_id: 2, status: 'wish')
-bs2 = BookStatus.create!(user_id: 3, book_id: 1, status: 'read')
-bs3 = BookStatus.create!(user_id: 4, book_id: 3, status: 'current')
-bs4 = BookStatus.create!(user_id: 4, book_id: 4, status: 'read')
-bs5 = BookStatus.create!(user_id: 5, book_id: 4, status: 'wish')
-bs6 = BookStatus.create!(user_id: 5, book_id: 2, status: 'current')
+bs1 = BookStatus.create!(user_id: 3, book_id: 56, status: 'wish')
+bs2 = BookStatus.create!(user_id: 3, book_id: 17, status: 'read')
+bs3 = BookStatus.create!(user_id: 4, book_id: 10, status: 'current')
+bs4 = BookStatus.create!(user_id: 4, book_id: 20, status: 'read')
+bs5 = BookStatus.create!(user_id: 5, book_id: 100, status: 'wish')
+bs6 = BookStatus.create!(user_id: 5, book_id: 256, status: 'current')
 
 # == Schema Information
 #

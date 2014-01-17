@@ -16,7 +16,6 @@ KR.Views.ClubNew = Backbone.View.extend({
   submit: function (event) {
     event.preventDefault();
     var club = $('#new-club-form').serializeJSON();
-    debugger
     KR.clubs.create(club);
   }
   

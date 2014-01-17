@@ -42,17 +42,35 @@ KR.Routers.Router = Backbone.Router.extend({
 
   clubsIndex: function () {
     var view = new KR.Views.ClubsIndex({
-      collection: clubs
+      collection: KR.clubs
     });
     this._swapView(view);
   },
  
   clubShow: function(clubId) {
-    var club = KR.clubs.get(clubId);
-    var view = new KR.Views.ClubShow({
-      model: club
+    var that = this;
+    var club = this._getClub(clubId, function (club) {
+      var view = new KR.Views.ClubShow({
+        model: club
+      });
+      that._swapView(view);   
     });
-    this._swapView(view);
+  },
+
+  _getClub: function (id, callback) {
+    var club = KR.clubs.get(id);
+    if (!club) {
+      club = new KR.Models.Club({ id: id });
+      club.collection = KR.clubs;
+      club.fetch({
+        success: function () {
+          KR.clubs.add(club);
+          callback(club);
+        }
+      });
+    } else {
+      callback(club);
+    }
   },
 
   _swapView: function(view) {

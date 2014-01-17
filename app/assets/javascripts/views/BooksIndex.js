@@ -18,7 +18,7 @@ KR.Views.BooksIndex = Backbone.View.extend({
       var view = new KR.Views.BookListItem({
         model: book
       });
-      that.$el.find('#book_list').append(view.render().$el);
+      that.$('#book_list').append(view.render().$el);
     });
 
     return this;
