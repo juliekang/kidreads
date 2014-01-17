@@ -1,6 +1,6 @@
 KR.Views.BookListItem = Backbone.View.extend({
   events: {
-    "click a" : "insertBookShow"
+    "click a" : "toggleBookShow"
   },
   tagName: 'li',  
   template: JST["books/listItem"],
@@ -13,15 +13,20 @@ KR.Views.BookListItem = Backbone.View.extend({
     return this;
   },
 
-  insertBookShow: function(event) {
+  toggleBookShow: function(event) {
     event.preventDefault();
     var that = this;
 
-    var view = new KR.Views.BookShow({
-      model: this.model
-    });
+    if(this.$('#book_data').html().length > 0) {
+      this.$('#book_data').html('');
+    } else {
+       var view = new KR.Views.BookShow({
+        model: this.model
+      });
 
-    this.$('#book_data').html(view.render().$el);
+      this.$('#book_data').html(view.render().$el);     
+    }
+
     return this;
   }
   
