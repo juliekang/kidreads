@@ -12,6 +12,10 @@
 #  reading_level :float
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  goodreads_id  :string(255)
+#  image_url     :string(255)
+#  ratings_count :integer
+#  ratings_sum   :integer
 #
 
 require 'test_helper'

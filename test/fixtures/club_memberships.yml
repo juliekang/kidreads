@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: club_memberships
+#
+#  id              :integer          not null, primary key
+#  member_id       :integer
+#  club_id         :integer
+#  membership_type :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  member_id: 1
+  club_id: 1
+  membership_type: MyString
+
+two:
+  member_id: 1
+  club_id: 1
+  membership_type: MyString

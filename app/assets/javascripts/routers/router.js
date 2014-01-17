@@ -4,9 +4,15 @@ KR.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
+    "" : "root",
     "books" : "booksIndex",
     "books/:id" : "bookShow",
     "users/:id" : "userShow"
+  },
+
+  root: function () {
+    var view = new KR.Views.Root();
+    this._swapView(view);
   },
 
   booksIndex: function () {
@@ -15,14 +21,6 @@ KR.Routers.Router = Backbone.Router.extend({
     });
     this._swapView(view);
   },
-
-  bookListItem: function (bookId) {
-    var book = KR.books.get(bookId);
-    var view = new KR.Views.BookListItem({
-      model: book
-    });
-    this._swapView(view);
-  }, 
 
   bookShow: function(bookId) {
     var book = KR.books.get(bookId);
@@ -43,7 +41,7 @@ KR.Routers.Router = Backbone.Router.extend({
   _swapView: function(view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
-    $("#kr_pane").html(this._currentView.render().$el);
+    this.$rootEl.html(this._currentView.render().$el);
   }
 
 });

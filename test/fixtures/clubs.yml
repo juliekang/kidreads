@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: clubs
+#
+#  id         :integer          not null, primary key
+#  leader_id  :integer
+#  club_name  :string(255)
+#  club_type  :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  founder_id: 1
+  club_name: MyString
+  club_type: MyString
+
+two:
+  founder_id: 1
+  club_name: MyString
+  club_type: MyString

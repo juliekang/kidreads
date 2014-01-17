@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116182400) do
+ActiveRecord::Schema.define(:version => 20140117062127) do
 
   create_table "book_statuses", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -36,11 +36,37 @@ ActiveRecord::Schema.define(:version => 20140116182400) do
     t.float    "reading_level"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "goodreads_id"
+    t.string   "image_url"
+    t.integer  "ratings_count"
+    t.integer  "ratings_sum"
   end
 
   add_index "books", ["author"], :name => "index_books_on_author"
   add_index "books", ["genre"], :name => "index_books_on_genre"
   add_index "books", ["isbn"], :name => "index_books_on_isbn", :unique => true
+
+  create_table "club_memberships", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "club_id"
+    t.string   "membership_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "club_memberships", ["club_id"], :name => "index_club_memberships_on_club_id"
+  add_index "club_memberships", ["member_id"], :name => "index_club_memberships_on_member_id"
+
+  create_table "clubs", :force => true do |t|
+    t.integer  "leader_id"
+    t.string   "club_name"
+    t.string   "club_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "clubs", ["club_type"], :name => "index_clubs_on_club_type"
+  add_index "clubs", ["leader_id"], :name => "index_clubs_on_leader_id"
 
   create_table "reviews", :force => true do |t|
     t.integer  "book_id",    :null => false

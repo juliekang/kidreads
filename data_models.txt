@@ -18,24 +18,16 @@ UserType (kid, parent, teacher, admin)
   description
 
 Club
-  founder_id
+  leader_id
   club_name
-  club_type_id
-
-ClubType (classroom, family)
-  label
-  description
+  club_type (classroom, family)
 
 ClubMembership
   member_id
   club_id
-  membership_type_id
+  membership_type (leader, kid, adult)
 
-ClubMembershipType (founder, kid_member, adult_member)
-  label
-  description
-
-ClubComment
+Comment
   club_id
   commenter_id
   parent_comment_id

@@ -1,12 +1,5 @@
 <!-- Buttons -->
-
-<button id="new-book-button" class="btn btn-primary" data-toggle="modal" data-target="#new-book-modal">Enter a New Book</button>
-<button id="my-books-button" class="btn btn-primary">My Books</button>
-
-
-
-
-
+<div id="buttons"></div>
 
 <!-- Modals -->
 
@@ -17,15 +10,49 @@
   </div>
 <%= render "layouts/modal_footer" %>
 
+<div id="new-club-modal" class="modal fade">
+<%= render "layouts/modal_header" %>
+  <div class="modal-body">
+    <%= render "books/new" %>
+  </div>
+<%= render "layouts/modal_footer" %>
+
 <!-- Submit Scripts -->
 
 <script type="text/javascript">
+$(function () {
   $('#new-book-form').on('submit', function (event) {
-    var book = $(event.target.form).serializeJSON();
-    KR.books.create(book);
+    console.log("clicked submit!")
+    event.preventDefault();
+    var book = $(event.target).serializeJSON();
     console.log(book);
+
+    KR.books.create(book);
   });
+
+  $('#new-club-form').on('submit', function (event) {
+    console.log("clicked submit!")
+    event.preventDefault();
+    var club = $(event.target).serializeJSON();
+    console.log(club);
+
+    KR.clubs.create(club);
+  });
+
+  $('#my-kids-button').click(function () {
+    window.location = "/#kids";
+  });
+
+  $('#my-clubs-button').click(function () {
+    window.location = "/#clubs";
+  });
+
+  $('#find-books-button').click(function () {
+    window.location = "/#search";
+  });
+
   $('#my-books-button').click(function () {
     window.location = "/#books";
   });
+})
 </script>

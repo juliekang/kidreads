@@ -99,5 +99,39 @@ bs4 = BookStatus.create!(user_id: 4, book_id: 4, status: 'read')
 bs5 = BookStatus.create!(user_id: 5, book_id: 4, status: 'wish')
 bs6 = BookStatus.create!(user_id: 5, book_id: 2, status: 'current')
 
+# == Schema Information
+#
+# Table name: clubs
+#
+#  id         :integer          not null, primary key
+#  leader_id  :integer
+#  club_name  :string(255)
+#  club_type  :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+c1 = Club.create!(leader_id: 1, club_name: "Mang Family", club_type: "family")
+c2 = Club.create!(leader_id: 2, club_name: "Foo Family", club_type: "family")
+c3 = Club.create!(leader_id: 1, club_name: "Mrs. Smith's First Grade Class 2013-2014", club_type: "classroom")
+
+# == Schema Information
+#
+# Table name: club_memberships
+#
+#  id              :integer          not null, primary key
+#  member_id       :integer
+#  club_id         :integer
+#  membership_type :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+cm1 = ClubMembership(member_id: 1, club_id: 1, membership_type: 'leader')
+cm2 = ClubMembership(member_id: 2, club_id: 1, membership_type: 'adult')
+cm3 = ClubMembership(member_id: 3, club_id: 1, membership_type: 'kid')
+cm4 = ClubMembership(member_id: 2, club_id: 2, membership_type: 'leader')
+cm5 = ClubMembership(member_id: 4, club_id: 1, membership_type: 'kid')
+
 end
 

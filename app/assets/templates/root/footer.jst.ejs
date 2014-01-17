@@ -1,0 +1,29 @@
+<% if (role == 'Parent') { %>
+  <button id="my-kids-button" class="btn btn-primary">My Kids</button>
+  <button id="my-clubs-button" class="btn btn-primary">My Clubs</button>
+  <button id="new-club-button" class="btn btn-default" data-toggle="modal" data-target="#new-club-modal">Make a New Club</button>
+<% } else if (role == 'Kid') { %>
+  <button id="my-books-button" class="btn btn-primary">My Books</button>
+  <button id="my-clubs-button" class="btn btn-primary">My Clubs</button>
+  <button id="find-books-button" class="btn btn-default">Find New Books</button>
+<% } else if (role == 'Teacher') { %>
+  <button id="my-class-button" class="btn btn-primary">My Class</button>
+  <button id="new-class-button" class="btn btn-default" data-toggle="modal" data-target="#new-class-modal">Add a New Class</button>
+<% } %>
+
+<div id="new-club-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Make a New Club</h4>
+      </div>
+      <div id="new-club-modal-body" class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
