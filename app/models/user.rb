@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :book_statuses
   has_many :books, :through => :book_statuses
+  has_many :club_memberships, :class_name => 'ClubMembership', :foreign_key => :member_id, :primary_key => :id
+  has_many :clubs, :through => :club_memberships
   belongs_to :user_type
 
   def self.find_by_credentials(username, password)

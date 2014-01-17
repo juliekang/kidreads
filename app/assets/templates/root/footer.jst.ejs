@@ -19,10 +19,31 @@
         <h4 class="modal-title">Make a New Club</h4>
       </div>
       <div id="new-club-modal-body" class="modal-body">
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <h2>Create a New Club</h2>
+    <form id="new-club-form">
+      <div class="form-group">
+        <label for="club_name">Club Name</label>
+        <input type="text" class="form-control" name="club[club_name]" id="club_name" placeholder="Club Name">
+      </div>
+
+      <div class="form-group">
+        <label for="club-type">Club Type</label>
+          <br/>
+          <input name="club[club_type]" value="family" id="club_club_type_1" type="radio">Family
+          <br/>
+          <input name="club[club_type]" value="classroom" id="club_club_type_2" type="radio">Classroom
+          <br/>
+      </div>
+
+    </form>
+  </div>
+</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="new-club-submit" class="btn btn-primary">Submit</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

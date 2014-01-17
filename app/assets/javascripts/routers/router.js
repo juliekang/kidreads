@@ -7,7 +7,9 @@ KR.Routers.Router = Backbone.Router.extend({
     "" : "root",
     "books" : "booksIndex",
     "books/:id" : "bookShow",
-    "users/:id" : "userShow"
+    "users/:id" : "userShow",
+    "clubs" : "clubsIndex",
+    "clubs/:id" : "clubShow"
   },
 
   root: function () {
@@ -34,6 +36,21 @@ KR.Routers.Router = Backbone.Router.extend({
     var user = KR.users.get(userId);
     var view = new KR.Views.UserShow({
       model: user
+    });
+    this._swapView(view);
+  },
+
+  clubsIndex: function () {
+    var view = new KR.Views.ClubsIndex({
+      collection: clubs
+    });
+    this._swapView(view);
+  },
+ 
+  clubShow: function(clubId) {
+    var club = KR.clubs.get(clubId);
+    var view = new KR.Views.ClubShow({
+      model: club
     });
     this._swapView(view);
   },

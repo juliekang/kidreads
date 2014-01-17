@@ -7,6 +7,7 @@ Kidreads::Application.routes.draw do
   namespace :kr, :defaults => {:format => :json } do
     resources :books
     resources :reviews
+    resources :clubs
   end
 
 end

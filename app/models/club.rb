@@ -11,8 +11,11 @@
 #
 
 class Club < ActiveRecord::Base
-  attr_accessible :club_name, :club_type, :founder_id
+  attr_accessible :club_name, :club_type
 
-  validates :club_name, :club_type, :founder_id, :presence => true
+  has_many :club_memberships
+  has_many :members, :through => :club_memberships
+
+  validates :club_name, :club_type, :presence => true
   validates :club_name, :uniqueness => true
 end

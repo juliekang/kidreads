@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140117062127) do
+ActiveRecord::Schema.define(:version => 20140117200600) do
 
   create_table "book_statuses", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20140117062127) do
   add_index "club_memberships", ["member_id"], :name => "index_club_memberships_on_member_id"
 
   create_table "clubs", :force => true do |t|
-    t.integer  "leader_id"
     t.string   "club_name"
     t.string   "club_type"
     t.datetime "created_at", :null => false
@@ -66,7 +65,6 @@ ActiveRecord::Schema.define(:version => 20140117062127) do
   end
 
   add_index "clubs", ["club_type"], :name => "index_clubs_on_club_type"
-  add_index "clubs", ["leader_id"], :name => "index_clubs_on_leader_id"
 
   create_table "reviews", :force => true do |t|
     t.integer  "book_id",    :null => false

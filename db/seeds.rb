@@ -111,9 +111,9 @@ bs6 = BookStatus.create!(user_id: 5, book_id: 2, status: 'current')
 #  updated_at :datetime         not null
 #
 
-c1 = Club.create!(leader_id: 1, club_name: "Mang Family", club_type: "family")
-c2 = Club.create!(leader_id: 2, club_name: "Foo Family", club_type: "family")
-c3 = Club.create!(leader_id: 1, club_name: "Mrs. Smith's First Grade Class 2013-2014", club_type: "classroom")
+c1 = Club.create!(club_name: "Mang Family", club_type: "family")
+c2 = Club.create!(club_name: "Foo Family", club_type: "family")
+c3 = Club.create!(club_name: "Mrs. Smith's First Grade Class 2013-2014", club_type: "classroom")
 
 # == Schema Information
 #
@@ -127,11 +127,11 @@ c3 = Club.create!(leader_id: 1, club_name: "Mrs. Smith's First Grade Class 2013-
 #  updated_at      :datetime         not null
 #
 
-cm1 = ClubMembership(member_id: 1, club_id: 1, membership_type: 'leader')
-cm2 = ClubMembership(member_id: 2, club_id: 1, membership_type: 'adult')
-cm3 = ClubMembership(member_id: 3, club_id: 1, membership_type: 'kid')
-cm4 = ClubMembership(member_id: 2, club_id: 2, membership_type: 'leader')
-cm5 = ClubMembership(member_id: 4, club_id: 1, membership_type: 'kid')
+cm1 = ClubMembership.create!(member_id: 1, club_id: 1, membership_type: 'leader')
+cm2 = ClubMembership.create!(member_id: 2, club_id: 1, membership_type: 'adult')
+cm3 = ClubMembership.create!(member_id: 3, club_id: 1, membership_type: 'kid')
+cm4 = ClubMembership.create!(member_id: 2, club_id: 2, membership_type: 'leader')
+cm5 = ClubMembership.create!(member_id: 4, club_id: 1, membership_type: 'kid')
 
 end
 

@@ -1,5 +1,7 @@
 KR.Views.Footer = Backbone.View.extend({
-  events: {},
+  events: {
+    "click #new-club-submit" : "submit"
+  },
   
   template: JST["root/footer"],
 
@@ -12,7 +14,16 @@ KR.Views.Footer = Backbone.View.extend({
       role: this.role
     });
     this.$el.html(renderedContent);
+    //this.$el.$('#new-club-modal-body').html(new KR.Views.ClubNew({ model: KR.currentUser }).render().$el);
+
     return this;
+  },
+
+  submit: function (event) {
+    event.preventDefault();
+    var club = $('#new-club-form').serializeJSON();
+    debugger
+    KR.clubs.create(club);
   }
   
 });

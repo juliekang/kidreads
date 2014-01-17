@@ -16,6 +16,9 @@ window.KR = {
     KR.books = new KR.Collections.Books();
     KR.books.fetch();
 
+    KR.clubs = new KR.Collections.Clubs();
+    KR.clubs.fetch();
+
     var headerView = new KR.Views.Header();
     $('#header').html(headerView.render().$el);
 

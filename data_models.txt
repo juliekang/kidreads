@@ -18,7 +18,6 @@ UserType (kid, parent, teacher, admin)
   description
 
 Club
-  leader_id
   club_name
   club_type (classroom, family)
 
