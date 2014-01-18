@@ -19,13 +19,13 @@
 #
 
 class Book < ActiveRecord::Base
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
+  # include Tire::Model::Search
+  # include Tire::Model::Callbacks
 
-  mapping do
-    indexes :title,  :analyzer => 'snowball', :boost => 100
-    indexes :author, :analyzer => 'snowball', :boost => 30
-  end
+  # mapping do
+  #   indexes :title,  :analyzer => 'snowball', :boost => 100
+  #   indexes :author, :analyzer => 'snowball', :boost => 30
+  # end
 
   attr_accessible :title, :author, :isbn, :pub_year, :genre, :num_pages, :reading_level, :image_url
 
