@@ -1001,11 +1001,11 @@ Book.create!([
   {isbn: "0679890696", title: "Twister on Tuesday (Magic Tree House, #23)", author: "Mary Pope Osborne", pub_year: 2001, genre: nil, num_pages: 96, reading_level: nil, goodreads_id: "526643", image_url: "http://d202m5krfqbpi5.cloudfront.net/books/1320560749m/526643.jpg", ratings_count: 4196, ratings_sum: nil}
 ])
 User.create!([
-  {user_type_id: 2, username: "mommy2", email: "mom2@mom.me", first_name: "Mom2", last_name: "My", city: "San Francisco", state: "CA", birthday: nil, password_digest: "$2a$10$k.qaCJy0O.1jzL6tKqu80uZhX2Oyw7PHkSK5ylMQOSAaY3BHbYfGC", session_token: "gHEfeHVID2qI6iWxzV6M9g", points: nil},
-  {user_type_id: 1, username: "kid2", email: "kid2@mom.me", first_name: "Kid2", last_name: "My", city: "San Francisco", state: "CA", birthday: nil, password_digest: "$2a$10$5BV5xT/K70S1SNpiIXrgvOi3jFTFGZprI844MWZORtMJsG7vjf3FC", session_token: "o-VjBg0TkgWjumSqxrQ3ng", points: nil},
-  {user_type_id: 1, username: "kid3", email: "kid3@mom.me", first_name: "Kid3", last_name: "My", city: "San Francisco", state: "CA", birthday: nil, password_digest: "$2a$10$JehG7RSJER38GPa7gs1lcemAN.LsMVI.ahie5pcWQbA0ln7eKFkG6", session_token: "RjgxT2GlCt7R8BjF4YBH_g", points: nil},
-  {user_type_id: 1, username: "kid1", email: "kid1@mom.me", first_name: "Kid1", last_name: "My", city: "Long Beach", state: "CA", birthday: nil, password_digest: "$2a$10$Q6QxzD9UTmYY.t3tnThdweIsVGsEPAtYLcTZo1eSEpFfnPwupVEIu", session_token: "yjiQz22WAyHMotml8Ocayg", points: nil},
-  {user_type_id: 2, username: "mommy1", email: "mom1@mom.me", first_name: "Mom1", last_name: "My", city: "Long Beach", state: "CA", birthday: nil, password_digest: "$2a$10$BK35TTLaLo6LIJ437yjVd.43EUAgSbw28g0a9imiOUfTFcAeyvMB.", session_token: "F58jJ_gRHaHGCA9Q3zRZNg", points: nil}
+  {user_type_id: 2, username: "mommy2", email: "mom2@mom.me", first_name: "Mom2", last_name: "My", city: "San Francisco", state: "CA", birthday: nil, password: "mommom", points: nil},
+  {user_type_id: 1, username: "kid2", email: "kid2@mom.me", first_name: "Kid2", last_name: "My", city: "San Francisco", state: "CA", birthday: nil, password: "mommom", points: nil},
+  {user_type_id: 1, username: "kid3", email: "kid3@mom.me", first_name: "Kid3", last_name: "My", city: "San Francisco", state: "CA", birthday: nil, password: "mommom", points: nil},
+  {user_type_id: 1, username: "kid1", email: "kid1@mom.me", first_name: "Kid1", last_name: "My", city: "Long Beach", state: "CA", birthday: nil, password: "mommom", points: nil},
+  {user_type_id: 2, username: "mommy1", email: "mom1@mom.me", first_name: "Mom1", last_name: "My", city: "Long Beach", state: "CA", birthday: nil, password: "mommom", points: nil}
 ])
 UserType.create!([
   {label: "Kid", description: "Kids can rate books, post reviews, track their own progress, and participate in book clubs."},
