@@ -8,6 +8,7 @@ Kidreads::Application.routes.draw do
     resources :books
     resources :reviews
     resources :clubs
+    resources :book_statuses
   end
 
 end

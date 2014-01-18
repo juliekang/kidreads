@@ -1,5 +1,7 @@
 KR.Views.BookShow = Backbone.View.extend({
-  events: {},
+  events: {
+    "change #list-selector" : "listSelected"
+  },
   
   template: JST["books/show"],
 
@@ -9,6 +11,17 @@ KR.Views.BookShow = Backbone.View.extend({
     });
     this.$el.html(renderedContent);
     return this;
+  },
+
+  listSelected: function (event) {
+    event.preventDefault();
+    var statusVal = $(event.target).val();
+
+    var status = new KR.Models.BookStatus({
+      book_id: this.model.id, 
+      status: statusVal
+    });
+    status.save();
   }
   
 });

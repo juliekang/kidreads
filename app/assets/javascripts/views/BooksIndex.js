@@ -18,7 +18,20 @@ KR.Views.BooksIndex = Backbone.View.extend({
       var view = new KR.Views.BookListItem({
         model: book
       });
-      that.$('#book_list').append(view.render().$el);
+      var bookId = book.get('id');
+      // console.log(bookId);
+      var status = KR.bookStatuses.findWhere({book_id: bookId}).get('status');
+
+      // console.log(status)
+      if(status == 'current') {
+        that.$('#current').append(view.render().$el);
+      } else if(status == 'read') {
+        that.$('#read').append(view.render().$el);
+      } else if(status == 'wish') {
+        that.$('#wish').append(view.render().$el);
+      } else {
+        that.$('#randoms').append(view.render().$el);
+      }
     });
 
     return this;
