@@ -17,6 +17,7 @@
 //= require backbone
 //= require bootstrap
 //= require kidreads
+//= require backbone.autocomplete
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

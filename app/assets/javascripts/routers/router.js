@@ -25,11 +25,29 @@ KR.Routers.Router = Backbone.Router.extend({
   },
 
   bookShow: function(bookId) {
-    var book = KR.books.get(bookId);
-    var view = new KR.Views.BookShow({
-      model: book
+    var that = this
+    var book = this._getBook(bookId, function (book) {
+      var view = new KR.Views.BookShow({
+        model: book
+      });
+      that._swapView(view);
     });
-    this._swapView(view);
+  },
+
+    _getBook: function (id, callback) {
+    var book = KR.books.get(id);
+    if (!book) {
+      book = new KR.Models.Book({ id: id });
+      book.collection = KR.books;
+      book.fetch({
+        success: function () {
+          KR.books.add(book);
+          callback(book);
+        }
+      });
+    } else {
+      callback(book);
+    }
   },
 
   userShow: function(userId) {

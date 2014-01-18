@@ -1,6 +1,7 @@
 KR.Views.Footer = Backbone.View.extend({
   events: {
     "click button#new-club-submit" : "submit",
+    "click button#random-book-button" : "randomBook"
   },
   
   template: JST["root/footer"],
@@ -15,7 +16,6 @@ KR.Views.Footer = Backbone.View.extend({
       role: this.role
     });
     this.$el.html(renderedContent);
-    //this.$el.$('#new-club-modal-body').html(new KR.Views.ClubNew({ model: KR.currentUser }).render().$el);
 
     return this;
   },
@@ -30,6 +30,11 @@ KR.Views.Footer = Backbone.View.extend({
         $('.modal-backdrop').remove();
       }
     });
+  },
+
+  randomBook: function (event) {
+    var bookId = Math.floor(Math.random() * 19000) + 8;
+    Backbone.history.navigate('books/' + bookId, {trigger: true}); 
   }
   
 });
