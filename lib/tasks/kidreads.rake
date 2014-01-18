@@ -24,48 +24,48 @@
 require 'pp'
 
 namespace :kidreads do
-  # desc "Fetch the list of children's books registered with Goodreads."
-  # task fetch_goodreads_children_genre: :environment do
-  #   # TODO: move these keys out to a non-checked-in config file :)
-  #   # These are throwaway creds, so shrug for now.
-  #   client = Goodreads::Client.new(:api_key => ENV['GOODREADS_KEY'], :api_secret => ENV['GOODREADS_SECRET'])
+  desc "Fetch the list of children's books registered with Goodreads."
+  task fetch_goodreads_children_genre: :environment do
+    # TODO: move these keys out to a non-checked-in config file :)
+    # These are throwaway creds, so shrug for now.
+    client = Goodreads::Client.new(:api_key => ENV['GOODREADS_KEY'], :api_secret => ENV['GOODREADS_SECRET'])
 
-  #   page_num = 1
-  #   search = client.search_books("children", {:field => "genre", :page => page_num})
+    page_num = 1
+    search = client.search_books("children", {:field => "genre", :page => page_num})
 
-  #   # to dump a sample result...
-  #   # pp search.results.work[0]
+    # to dump a sample result...
+    # pp search.results.work[0]
 
-  #   total_hits = 0
-  #   while search.results.is_a? Hashie::Mash
-  #     hits = 0
-  #     new_hits = 0
-  #     search.results.work.each do |hit|
-  #       # Complains about strong parameters / mass assignment
-  #       # unless add deprecated gem 'protected_attributes'
-  #       # TODO: figure out how to do an upsert (update or insert)
-  #       # in a rake task in Rails 4 properly.
-  #       book = Book.where(goodreads_id: hit.best_book.id.to_s).first_or_initialize
-  #       book.title = hit.best_book.title
-  #       book.author = hit.best_book.author.name
-  #       book.pub_year = hit.original_publication_year
+    total_hits = 0
+    while search.results.is_a? Hashie::Mash
+      hits = 0
+      new_hits = 0
+      search.results.work.each do |hit|
+        # Complains about strong parameters / mass assignment
+        # unless add deprecated gem 'protected_attributes'
+        # TODO: figure out how to do an upsert (update or insert)
+        # in a rake task in Rails 4 properly.
+        book = Book.where(goodreads_id: hit.best_book.id.to_s).first_or_initialize
+        book.title = hit.best_book.title
+        book.author = hit.best_book.author.name
+        book.pub_year = hit.original_publication_year
 
-  #       total_hits += 1
-  #       hits += 1
-  #       new_hits += 1 if book.new_record?
+        total_hits += 1
+        hits += 1
+        new_hits += 1 if book.new_record?
 
-  #       book.save!
-  #     end
+        book.save!
+      end
 
-  #     puts "Hits: #{hits}, new hits: #{new_hits}, total hits: #{total_hits}"
-  #     page_num += 1
-  #     search = client.search_books("children", {:field => "genre", :page => page_num})
+      puts "Hits: #{hits}, new hits: #{new_hits}, total hits: #{total_hits}"
+      page_num += 1
+      search = client.search_books("children", {:field => "genre", :page => page_num})
 
-  #     # Goodreads API rules stipulate 1 req/sec average load against one API key.
-  #     # Note that there are ~4200 pages in the Children genre so it will take ~1.5 hours to store it all.
-  #     sleep 1
-  #   end
-  # end
+      # Goodreads API rules stipulate 1 req/sec average load against one API key.
+      # Note that there are ~4200 pages in the Children genre so it will take ~1.5 hours to store it all.
+      sleep 1
+    end
+  end
 
   desc "For each book in the database that's missing an ISBN, look it up (along with some other metadata) via Goodreads."
   # Sample response:

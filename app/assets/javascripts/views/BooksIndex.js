@@ -5,7 +5,7 @@ KR.Views.BooksIndex = Backbone.View.extend({
   template: JST["books/index"],
 
   initialize: function () {
-    this.listenTo(this.collection, "add:status add remove reset", this.render);
+    this.listenTo(this.collection, "add remove reset", this.render);
   },
 
   render: function () {

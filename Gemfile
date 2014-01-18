@@ -7,6 +7,8 @@ gem 'backbone-on-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'tire'
+
 gem 'pg'
 gem 'better_errors'
 gem 'binding_of_caller'

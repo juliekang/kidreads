@@ -4,8 +4,12 @@ class Kr::BooksController < ApplicationController
   
 
   def index
-    @books = current_user.books
-    @book_statuses = BookStatus.where(user_id: current_user.id)
+    if params[:query].present?
+      @books = Book.search(params[:query])
+    else
+      @books = current_user.books
+      @book_statuses = BookStatus.where(user_id: current_user.id)
+    end
   end
 
   def create

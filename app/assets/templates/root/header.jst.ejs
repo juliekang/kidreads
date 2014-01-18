@@ -1,8 +1,18 @@
 <!-- Buttons -->
-
-<button id="new-account-button" class="btn btn-primary">Create Account</button>
-<button id="sign-in-button" class="btn btn-primary">Sign In</button>
-
+<div class="row">
+  <div class="col-xs-4">
+    <button id="new-account-button" class="btn btn-primary">Create Account</button>
+    <button id="sign-in-button" class="btn btn-primary">Sign In</button>
+  </div>
+  <div class="col-xs-4 col-xs-offset-4">
+    <form id="searchbox" action="/search/query" method="GET">
+      <input type="radio" name="filter" value="title">Title
+      <input type="radio" name="filter" value="author">Author
+      <input type="text" name="q" id="query" name="params[query]">
+      <input type="submit" value="Search">
+    </form>
+  </div>
+</div>
 
 <!-- Submits -->
 

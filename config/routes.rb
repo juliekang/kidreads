@@ -11,4 +11,5 @@ Kidreads::Application.routes.draw do
     resources :book_statuses
   end
 
+  get "search/query"
 end

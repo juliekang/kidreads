@@ -9,7 +9,8 @@ KR.Routers.Router = Backbone.Router.extend({
     "books/:id" : "bookShow",
     "users/:id" : "userShow",
     "clubs" : "clubsIndex",
-    "clubs/:id" : "clubShow"
+    "clubs/:id" : "clubShow",
+    "search/query?q=:query" : "searchResults"
   },
 
   root: function () {
@@ -19,7 +20,7 @@ KR.Routers.Router = Backbone.Router.extend({
 
   booksIndex: function () {
     var that = this;
-    
+
     KR.books.fetch({
       success: function () {
         var view = new KR.Views.BooksIndex({
@@ -88,7 +89,7 @@ KR.Routers.Router = Backbone.Router.extend({
       club = new KR.Models.Club({ id: id });
       club.collection = KR.clubs;
       club.fetch({
-        success: function () {
+        success: function (club) {
           KR.clubs.add(club);
           callback(club);
         }
@@ -96,6 +97,18 @@ KR.Routers.Router = Backbone.Router.extend({
     } else {
       callback(club);
     }
+  },
+
+  searchResults: function () {
+    var results = new KR.Collections.Books();
+    results.fetch({
+      success: function (results) {
+        var view = new KR.Views.SearchResults({
+          collection: results
+        });
+        this._swapView(view);
+      }
+    });
   },
 
   _swapView: function(view) {
