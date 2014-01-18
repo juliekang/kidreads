@@ -11,6 +11,7 @@ gem 'pg'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'rails_12factor', group: :production
+gem 'seed_dump'
 
 gem 'figaro'
 gem 'cancan'
