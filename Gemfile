@@ -16,7 +16,6 @@ gem 'seed_dump'
 gem 'figaro'
 gem 'cancan'
 gem 'goodreads'
-gem 'tire'
 
 gem "annotate", "~> 2.6.1"
 
