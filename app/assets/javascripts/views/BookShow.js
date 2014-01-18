@@ -5,6 +5,10 @@ KR.Views.BookShow = Backbone.View.extend({
   
   template: JST["books/show"],
 
+  initialize: function () {
+    this.listenTo(this.model, "add remove reset", this.render)
+  },
+
   render: function () {
     var renderedContent = this.template({
       book: this.model

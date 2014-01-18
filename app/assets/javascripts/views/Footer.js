@@ -9,6 +9,7 @@ KR.Views.Footer = Backbone.View.extend({
   initialize: function (options) {
     this.role = options.role;
     this.listenTo(KR.clubs, "add remove reset", this.render)
+    this.listenTo(KR.books, "all", this.render)
   },
 
   render: function () {
@@ -33,7 +34,7 @@ KR.Views.Footer = Backbone.View.extend({
   },
 
   randomBook: function (event) {
-    var bookId = Math.floor(Math.random() * 19000) + 8;
+    var bookId = Math.floor(Math.random() * 1000);
     Backbone.history.navigate('books/' + bookId, {trigger: true}); 
   }
   
