@@ -26,6 +26,8 @@ KR.Views.BookShow = Backbone.View.extend({
       status: statusVal
     });
     status.save();
+
+    //KR.books.add(this.model);
   }
   
 });

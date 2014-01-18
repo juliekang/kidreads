@@ -5,13 +5,8 @@ window.KR = {
   Routers: {},
 
   initialize: function() {
-    KR.users = new KR.Collections.Users();
-    KR.bookStatuses = new KR.Collections.BookStatuses();
     KR.books = new KR.Collections.Books();
     KR.clubs = new KR.Collections.Clubs();
-
-    var usersFetch = KR.users.fetch(); 
-    var bookStatusesFetch = KR.bookStatuses.fetch();
     var booksFetch = KR.books.fetch();
     var clubsFetch = KR.clubs.fetch();
 
@@ -23,7 +18,7 @@ window.KR = {
     $('#footer').html(footerView.render().$el);
 
     $.when(
-      usersFetch, bookStatusesFetch, booksFetch, clubsFetch
+      booksFetch, clubsFetch
     ).then(function () {
         new KR.Routers.Router({ $rootEl: $('#kr_pane') });
         Backbone.history.start();      

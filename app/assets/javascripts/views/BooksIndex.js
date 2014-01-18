@@ -5,7 +5,7 @@ KR.Views.BooksIndex = Backbone.View.extend({
   template: JST["books/index"],
 
   initialize: function () {
-    this.listenTo(this.collection, "add remove reset", this.render)
+    this.listenTo(this.collection, "add:status add remove reset", this.render);
   },
 
   render: function () {
@@ -13,14 +13,12 @@ KR.Views.BooksIndex = Backbone.View.extend({
     var that = this;
 
     this.$el.html(renderedContent);
-
     this.collection.each(function (book) {
       var view = new KR.Views.BookListItem({
         model: book
       });
-      var bookId = book.get('id');
-      // console.log(bookId);
-      var status = KR.bookStatuses.findWhere({book_id: bookId}).get('status');
+
+      var status = book.get('status');
 
       // console.log(status)
       if(status == 'current') {
