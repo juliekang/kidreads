@@ -1,4 +1,4 @@
-json.array!(@book_statuses) do |json, book_status|
+json.array!(@book_statuses) do |book_status|
   json.id book_status.book_id
   book = @books.find(book_status.book_id)
   json.title book.title
