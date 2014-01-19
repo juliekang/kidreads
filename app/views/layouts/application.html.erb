@@ -17,7 +17,7 @@
   </head>
   <body>
 
-  <div id="big_window">
+  <div class="container">
     <div id="header"></div>
     
     <% if current_user %>
@@ -27,7 +27,7 @@
       </ul>
     <% end %>
 
-    <%= yield %>
+     <%= yield %>
 
     <% if current_user %>
       <div id="footer"></div>

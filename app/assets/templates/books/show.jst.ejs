@@ -1,73 +1,79 @@
 <h1><%= book.get('title') %></h1>
-<img src="<%= book.get('image_url')%>"/>
+<div class="row">
+  <div class="col-xs-2">
+    <img src="<%= book.get('image_url')%>"/>
+    <form id="add-to-lists">
+      <label for="list-selector">Add to List</label>
+      <select id="list-selector">
+        <option selected="selected" value=""></option>
+        <option value="wish">Wish List</option>
+        <option value="current">Currently Reading</option>
+        <option value="read">All Finished</option>
+      </select>
+    </form>
+  </div>
 
-<table>
-  <tr>
-    <td>
-      Title:
-    </td>
-    <td>
-      <%= book.get('title') %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      ISBN Number:
-    </td>
-    <td>
-      <%= book.get('isbn') %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Author:
-    </td>
-    <td>
-      <%= book.get('author') %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Genre:
-    </td>
-    <td>
-      <%= book.get('genre') %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Year of Publication:
-    </td>
-    <td>
-      <%= book.get('pub_year') %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Number of Pages:
-    </td>
-    <td>
-      <%= book.get('num_pages') %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Reading Level:
-    </td>
-    <td>
-      <%= book.get('reading_level') %>
-    </td>
-  </tr>
+  <div class="col-xs-8 col-xs-offset-2">
+    <table class="table table-bordered">
+      <tr>
+        <td>
+          Title:
+        </td>
+        <td>
+          <%= book.get('title') %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          ISBN Number:
+        </td>
+        <td>
+          <%= book.get('isbn') %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Author:
+        </td>
+        <td>
+          <%= book.get('author') %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Genre:
+        </td>
+        <td>
+          <%= book.get('genre') %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Year of Publication:
+        </td>
+        <td>
+          <%= book.get('pub_year') %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Number of Pages:
+        </td>
+        <td>
+          <%= book.get('num_pages') %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Reading Level:
+        </td>
+        <td>
+          <%= book.get('reading_level') %>
+        </td>
+      </tr>
 
-</table>
+    </table>
 
-<form id="add-to-lists">
-  <label for="list-selector">Add to List</label>
-  <select id="list-selector">
-    <option selected="selected" value=""></option>
-    <option value="wish">Wish List</option>
-    <option value="current">Currently Reading</option>
-    <option value="read">All Finished</option>
-  </select>
+  </div>
+</div>
 
-</form>

@@ -16,7 +16,7 @@ class Kr::BooksController < ApplicationController
     @book = Book.new(params[:book]);
 
     if @book.save
-      redirect_to book_url(@book);
+      render :json => @book
     else
       render :json => @book.errors.full_messages, :status => 422
     end
@@ -26,5 +26,10 @@ class Kr::BooksController < ApplicationController
     @book = Book.find(params[:id])
     render :json => @book
   end
+
+  def update
+
+  end
+
 
 end

@@ -4,7 +4,7 @@ class Kr::ClubsController < ApplicationController
 
   def index
     @clubs = current_user.clubs
-    render :json => @clubs
+    @memberships = ClubMembership.where(member_id: current_user.id)
   end
 
   def create

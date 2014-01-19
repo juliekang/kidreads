@@ -7,7 +7,7 @@
 <h2><a id="clubsLink" href="#"><%= user.get('first_name') %>'s Clubs</a></h2>
 <div id="clubs"></div>
 
-<% if(user.get('id') === KR.currentUserID) { %>
+<% if(user.get('id') === KR.currentUserID && KR.currentRole === 'parent') { %>
   <h2>My Kids</h2>
   <ul id="kids"></ul>
 <% } %>
