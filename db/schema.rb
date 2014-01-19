@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140117200600) do
+ActiveRecord::Schema.define(:version => 20140119014322) do
 
   create_table "book_statuses", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(:version => 20140117200600) do
   end
 
   add_index "clubs", ["club_type"], :name => "index_clubs_on_club_type"
+
+  create_table "parent_child_relationships", :force => true do |t|
+    t.integer  "parent_id"
+    t.integer  "child_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "parent_child_relationships", ["child_id"], :name => "index_parent_child_relationships_on_child_id"
+  add_index "parent_child_relationships", ["parent_id"], :name => "index_parent_child_relationships_on_parent_id"
 
   create_table "reviews", :force => true do |t|
     t.integer  "book_id",    :null => false

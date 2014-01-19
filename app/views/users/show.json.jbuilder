@@ -16,4 +16,18 @@ json.books(@user.books) do |json, book|
   json.id book.id
   json.title book.title
   json.image_url book.image_url
+  bookStatus = BookStatus.find_by_user_id_and_book_id(@user.id, book.id).status
+  json.status bookStatus
+end
+
+json.children(@user.children) do |json, child|
+  json.id child.id
+  json.first_name child.first_name
+  json.birthday child.birthday
+
+  json.childBooks(child.books) do |json, book|
+    json.id book.id
+    json.title book.title
+    json.image_url book.image_url
+  end
 end

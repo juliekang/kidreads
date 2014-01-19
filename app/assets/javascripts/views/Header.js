@@ -1,6 +1,7 @@
 KR.Views.Header = Backbone.View.extend({
   events: {
-    "submit form#searchbox" : "goSearch"
+    "submit form#searchbox" : "goSearch",
+    "click button#my-profile-button" : "showProfile"
   },
   
   template: JST["root/header"],
@@ -12,6 +13,10 @@ KR.Views.Header = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   },  
+
+  showProfile: function (event) {
+    Backbone.history.navigate('users/' + KR.currentUserID, {trigger: true}); 
+  },
 
   goSearch: function (event) {
     console.log("goSearch triggered");

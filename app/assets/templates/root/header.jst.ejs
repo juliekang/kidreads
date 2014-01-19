@@ -1,9 +1,11 @@
 <!-- Buttons -->
 <div class="row">
   <div class="col-xs-4">
-    <% if(!KR.currentUser) { %>
+    <% if(!KR.currentUserID) { %>
       <button id="new-account-button" class="btn btn-primary">Create Account</button>
       <button id="sign-in-button" class="btn btn-primary">Sign In</button>
+    <% } else { %>
+      <button id="my-profile-button" class="btn btn-primary">My Profile</button>
     <% } %>
   </div>
   <div class="col-xs-6 col-xs-offset-2">

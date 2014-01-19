@@ -42,7 +42,7 @@ KR.Routers.Router = Backbone.Router.extend({
     });
   },
 
-    _getBook: function (id, callback) {
+  _getBook: function (id, callback) {
     var book = KR.books.get(id);
     if (!book) {
       book = new KR.Models.Book({ id: id });
@@ -59,11 +59,22 @@ KR.Routers.Router = Backbone.Router.extend({
   },
 
   userShow: function(userId) {
-    var user = KR.currentUser;
-    var view = new KR.Views.UserShow({
-      model: user
+    var that = this;
+    var user = this._getUser(userId, function (user) {
+      var view = new KR.Views.UserShow({
+        model: user
+      });
+      that._swapView(view);   
+    });   
+  },
+
+  _getUser: function (id, callback) {
+    var user = new KR.Models.User({ id: id });
+    user.fetch({
+      success: function (user) {
+        callback(user);
+      }
     });
-    this._swapView(view);
   },
 
   clubsIndex: function () {

@@ -1,8 +1,13 @@
-<h1><%= user.get('first_name') %>'s Profile</h1>
-<ul id="user_details"></ul>
+<h2><%= user.get('first_name') %>'s Page</h2>
+<p><em><%= user.get('city') || "Somewhere" %>, <%= user.get('state') || "Out there" %> &sdot; <%= age || "Ageless"%></em></p>
 
-<h3><%= user.get('first_name') %>'s Books</h3>
-<ul id="books"></ul>
+<h2><a id="booksLink" href="#"><%= user.get('first_name') %>'s Books</a></h2>
+<div id="books"></div>
 
-<h3><%= user.get('first_name') %>'s Clubs</h3>
-<ul id="clubs"></ul>
+<h2><a id="clubsLink" href="#"><%= user.get('first_name') %>'s Clubs</a></h2>
+<div id="clubs"></div>
+
+<% if(user.get('id') === KR.currentUserID) { %>
+  <h2>My Kids</h2>
+  <ul id="kids"></ul>
+<% } %>

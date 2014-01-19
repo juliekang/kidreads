@@ -36,6 +36,12 @@ class User < ActiveRecord::Base
   has_many :books, :through => :book_statuses
   has_many :club_memberships, :class_name => 'ClubMembership', :foreign_key => :member_id, :primary_key => :id
   has_many :clubs, :through => :club_memberships
+  has_many :i_am_the_parent_relationships, 
+    :class_name => "ParentChildRelationship", :foreign_key => :parent_id, :primary_key => :id
+  has_many :i_am_the_child_relationships,
+    :class_name => "ParentChildRelationship", :foreign_key => :child_id, :primary_key => :id
+  has_many :parents, :through => :i_am_the_child_relationships
+  has_many :children, :through => :i_am_the_parent_relationships
   belongs_to :user_type
 
   def self.find_by_credentials(username, password)
