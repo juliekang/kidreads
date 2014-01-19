@@ -10,7 +10,7 @@ KR.Routers.Router = Backbone.Router.extend({
     "users/:id" : "userShow",
     "clubs" : "clubsIndex",
     "clubs/:id" : "clubShow",
-    "search/query?q=:query" : "searchResults"
+    "search/query" : "searchResults"
   },
 
   root: function () {
@@ -100,11 +100,12 @@ KR.Routers.Router = Backbone.Router.extend({
   },
 
   searchResults: function () {
-    var results = new KR.Collections.Books();
+    var results = new KR.Collections.SearchResults();
+    console.log(results);
     results.fetch({
-      success: function (results) {
+      success: function () {
         var view = new KR.Views.SearchResults({
-          collection: results
+          collection: results,
         });
         this._swapView(view);
       }

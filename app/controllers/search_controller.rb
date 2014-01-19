@@ -1,25 +1,13 @@
 class SearchController < ApplicationController
   def query
     @query_string = params[:q]
+    @query_string = "title:#{@query_string}" if params[:filter] == 'title';
+    @query_string = "author:#{@query_string}" if params[:filter] == 'author';
 
-    if params[:filter] == 'title'
-      results = Book.tire.search do |search|
-                search.query { |query| query.string "title:#{@query_string}" }
-                search.sort  { by :title }
-                search.size 30
-      end
-    elsif params[:filter] == 'author'
-      results = Book.tire.search do |search|
-                search.query { |query| query.string "author:#{@query_string}" }
-                search.sort  { by :title }
-                search.size 30
-      end
-    else
-      results = Book.tire.search do |search|
-                search.query { |query| query.string @query_string }
-                search.sort  { by :title }
-                search.size 30
-      end   
+    results = Book.tire.search do |search|
+              search.query { |query| query.string @query_string }
+              search.sort  { by :title }
+              search.size 30
     end
     render :json => results
   end

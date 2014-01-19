@@ -1,6 +1,6 @@
 KR.Views.Header = Backbone.View.extend({
   events: {
-    "click form#submit" : "goSearch"
+    "submit form#searchbox" : "goSearch"
   },
   
   template: JST["root/header"],
@@ -14,9 +14,21 @@ KR.Views.Header = Backbone.View.extend({
   },  
 
   goSearch: function (event) {
-    event.preventDefault();
-    var club = $('#searchbox').serializeJSON();
-    
+    console.log("goSearch triggered");
+    //event.preventDefault();
+    // var formData = $('#searchbox').serializeJSON();
+
+    // var results = new KR.Collections.SearchResults();
+    // results.fetch({
+    //   success: function () {    
+    //     var renderedContent = this.template({
+    //       results: results
+    //     });
+    //     this.$el.html(renderedContent);
+    //     return this;
+    //   }
+    // })
+
   },
   
 });

@@ -1,14 +1,17 @@
 <!-- Buttons -->
 <div class="row">
   <div class="col-xs-4">
-    <button id="new-account-button" class="btn btn-primary">Create Account</button>
-    <button id="sign-in-button" class="btn btn-primary">Sign In</button>
+    <% if(!KR.currentUser) { %>
+      <button id="new-account-button" class="btn btn-primary">Create Account</button>
+      <button id="sign-in-button" class="btn btn-primary">Sign In</button>
+    <% } %>
   </div>
-  <div class="col-xs-4 col-xs-offset-4">
+  <div class="col-xs-6 col-xs-offset-2">
     <form id="searchbox" action="/search/query" method="GET">
+      <label for="filter">Filter by: </label>
       <input type="radio" name="filter" value="title">Title
       <input type="radio" name="filter" value="author">Author
-      <input type="text" name="q" id="query" name="params[query]">
+      <input type="text" name="q" name="query">
       <input type="submit" value="Search">
     </form>
   </div>
@@ -22,5 +25,5 @@
   });
   $('#sign-in-button').click(function() {
     window.location = "/session/new";
-  })
+  });
 </script>

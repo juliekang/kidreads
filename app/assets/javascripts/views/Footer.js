@@ -22,7 +22,7 @@ KR.Views.Footer = Backbone.View.extend({
   },
 
   submit: function (event) {
-    //event.preventDefault();
+    event.preventDefault();
     var club = $('#new-club-form').serializeJSON();
     KR.clubs.create(club, { 
       success: function () {
