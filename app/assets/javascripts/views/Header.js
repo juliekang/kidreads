@@ -19,21 +19,15 @@ KR.Views.Header = Backbone.View.extend({
   },
 
   goSearch: function (event) {
-    console.log("goSearch triggered");
-    //event.preventDefault();
-    // var formData = $('#searchbox').serializeJSON();
+    event.preventDefault();
+    var formData = $('#searchbox').serializeJSON();
+    var query_string = 'search/results/' + formData['q'];
 
-    // var results = new KR.Collections.SearchResults();
-    // results.fetch({
-    //   success: function () {    
-    //     var renderedContent = this.template({
-    //       results: results
-    //     });
-    //     this.$el.html(renderedContent);
-    //     return this;
-    //   }
-    // })
-
+    if(formData['filter']) {
+      query_string = query_string + '/' + formData['filter'];
+    }
+    
+    Backbone.history.navigate(query_string, {trigger: true});
   },
   
 });

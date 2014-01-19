@@ -27,7 +27,8 @@ class Book < ActiveRecord::Base
     indexes :author, :analyzer => 'snowball', :boost => 30
   end
 
-  attr_accessible :title, :author, :isbn, :pub_year, :genre, :num_pages, :reading_level, :image_url
+  attr_accessible :title, :author, :isbn, :pub_year, :genre, :num_pages, :reading_level, :image_url,
+    :goodreads_id, :ratings_count, :ratings_sum
 
   validates :title, :author, :presence => true
   validates :isbn, :uniqueness => true, :allow_nil => true

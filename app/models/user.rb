@@ -20,7 +20,7 @@
 
 class User < ActiveRecord::Base
   attr_accessible :username, :user_type_id, :password, :email, :first_name, :last_name,
-                  :city, :state, :birthday, :goodreads_id
+                  :city, :state, :birthday, :points
   attr_reader :password
 
   validates :password_digest, :presence => { :message => "Password can't be blank" }
