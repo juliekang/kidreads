@@ -10,5 +10,6 @@ json.array!(@book_statuses) do |book_status|
   json.num_pages book.num_pages
   json.reading_level book.reading_level
   json.status book_status.status
+  json.ratings_count book.ratings_count
+  json.rating book.average_rating
 end
-  

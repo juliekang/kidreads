@@ -13,6 +13,7 @@ KR.Views.BookShow = Backbone.View.extend({
     var renderedContent = this.template({
       book: this.model
     });
+
     this.$el.html(renderedContent);
     return this;
   },

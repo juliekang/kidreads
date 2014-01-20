@@ -9,7 +9,6 @@ KR.Views.SearchResults = Backbone.View.extend({
   },
 
   render: function () {
-    console.log("inside render");
     var renderedContent = this.template();
     var that = this;
 
