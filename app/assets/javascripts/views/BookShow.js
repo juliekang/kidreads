@@ -6,7 +6,8 @@ KR.Views.BookShow = Backbone.View.extend({
   template: JST["books/show"],
 
   initialize: function () {
-    this.listenTo(this.model, "add remove reset", this.render)
+    this.listenTo(this.model, "add remove reset", this.render);
+    this.listenTo(KR.reviews, "add reset change", this._setUpRaty);
   },
 
   render: function () {
@@ -16,14 +17,27 @@ KR.Views.BookShow = Backbone.View.extend({
     });
 
     this.$el.html(renderedContent);
-    // Adding listener on click
+
+    this._setUpRaty();
+
+    var book_status = this.model.book_status().get('status');
+    if(book_status) {
+      this.$('#' + book_status).attr('selected', 'selected');
+    }
+
+    return this;
+  },
+
+  _setUpRaty: function () {
+    var that = this;
+    // Add listener on raty click
     this.$('#rating').raty({
       click: function(score, evt) {
-        that.saveRating(score, evt);
+        that.saveRating(score);
       }
     });
 
-    // Initializing with the average rating if available.
+    // Initializing with personal rating or average rating, if available
     var personalReview = this.model.current_user_review();
     var personalRating = personalReview.get('rating');
     var rating = this.model.get('rating');
@@ -33,35 +47,24 @@ KR.Views.BookShow = Backbone.View.extend({
       that.$('#rating').append('<em>Your Rating: ' + personalRating + '<em>');
     } else if (rating) {
       that.$('#rating').raty('score', rating);
-    }   
-    return this;
+    }
   },
 
   listSelected: function (event) {
     event.preventDefault();
     var statusVal = $(event.target).val();
 
-    var status = new KR.Models.BookStatus({
-      book_id: this.model.id, 
-      status: statusVal
-    });
-    status.save();
+    var newOrExistingStatus = this.model.book_status();
+    newOrExistingStatus.set({status: statusVal, book_id: this.model.get('id')});
+    newOrExistingStatus.save();
   }, 
 
-  saveRating: function (score, event) {
-    var existingReview = KR.reviews._getReview(KR.currentUserID, this.model.get('id'));
-
-    if(!existingReview) {
-      review = new KR.Models.Review();
-      review.collection = KR.reviews;
-      KR.reviews.create({
-        'rating': score,
-        'book_id': this.model.get('id')
-      });
-    } else {
-      existingReview.set('rating', score);
-      existingReview.save();
-    }
+  saveRating: function (score) {
+    var newOrExistingReview = this.model.current_user_review();
+    
+    newOrExistingReview.set({rating: score, book_id: this.model.get('id')});
+    newOrExistingReview.save();
+    KR.reviews.reset(newOrExistingReview);
   }
 
 });

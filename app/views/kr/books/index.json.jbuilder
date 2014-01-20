@@ -9,7 +9,7 @@ json.array!(@books) do |book|
   json.num_pages book.num_pages
   json.reading_level book.reading_level
 
-  json.status BookStatus.find_by_book_id_and_user_id(book.id, current_user.id)
+  json.book_status BookStatus.find_by_book_id_and_user_id(book.id, current_user.id)
 
   json.current_user_review Review.find_by_book_id_and_user_id(book.id, current_user.id)
 
