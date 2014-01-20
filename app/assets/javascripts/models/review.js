@@ -1,5 +1,3 @@
-KR.Models.Reviews = Backbone.Model.extend({
-  url: function () {
-    return "/kr/reviews/" + this.id;
-  },
+KR.Models.Review = Backbone.Model.extend({
+
 });

@@ -1,20 +1,10 @@
-<script>
-    // Initializing an empty rating.
-    jQuery.fn.raty.defaults.path = 'assets';  
-    $('#rating').raty({
-        click: function(starIndex) { console.log(starIndex); }
-    });
-
-    // Initializing a known rating.
-    $('#rating').raty('score', <%= book.get('rating')%>);
-</script>
-
 <h1><%= book.get('title') %></h1>
 <div class="row">
   <div class="col-xs-4">
     <img src="<%= book.get('image_url')%>"/>
     <div id="rating"></div>
-    <p><b>Rating: </b><%= book.get('rating')%> <em>(<%= book.get('ratings_count') %> ratings)</em></p>
+    <br/>
+    <p><b>GoodReads Rating: </b><%= book.get('rating')%> <em>(<%= book.get('ratings_count') %> ratings)</em></p>
     <form id="add-to-lists">
       <label for="list-selector">Add to List</label>
       <select id="list-selector">

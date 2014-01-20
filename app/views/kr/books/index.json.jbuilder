@@ -1,6 +1,5 @@
-json.array!(@book_statuses) do |book_status|
-  json.id book_status.book_id
-  book = @books.find(book_status.book_id)
+json.array!(@books) do |book|
+  json.id book.id
   json.title book.title
   json.image_url book.image_url
   json.isbn book.isbn
@@ -9,7 +8,11 @@ json.array!(@book_statuses) do |book_status|
   json.pub_year book.pub_year
   json.num_pages book.num_pages
   json.reading_level book.reading_level
-  json.status book_status.status
+
+  json.status BookStatus.find_by_book_id_and_user_id(book.id, current_user.id)
+
+  json.current_user_review Review.find_by_book_id_and_user_id(book.id, current_user.id)
+
   json.ratings_count book.ratings_count
   json.rating book.average_rating
 end

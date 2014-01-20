@@ -13,12 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require serializeJSON
+//= require jquery.raty
 //= require underscore
 //= require backbone
 //= require bootstrap
 //= require kidreads
 //= require backbone.autocomplete
-//= require jquery.raty
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

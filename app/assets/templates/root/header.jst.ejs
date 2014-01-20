@@ -1,6 +1,8 @@
 <!-- Buttons -->
 <div class="row">
   <div class="col-xs-4">
+    <button id="home-button" class="btn btn-success"><span class="glyphicon glyphicon-book"></span> KidReads</button>
+    
     <% if(!KR.currentUserID) { %>
       <button id="new-account-button" class="btn btn-primary">Create Account</button>
       <button id="sign-in-button" class="btn btn-primary">Sign In</button>
@@ -22,6 +24,9 @@
 <!-- Submits -->
 
 <script>
+  $('#home-button').click(function() {
+   window.location = "/";
+  });
   $('#new-account-button').click(function() {
    window.location = "/users/new";
   });
