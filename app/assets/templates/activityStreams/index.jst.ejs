@@ -1,0 +1,9 @@
+<br/>
+<h2>Your Activity Stream</h2>
+<ul id="streams_list">
+  <% streams.each( function (stream) { %>
+    <li><%= stream.get('user_id') %> <%= stream.get('activity_verb') %> 
+    <a href="<%= stream.get('url') %>"><%= stream.get('activity_object') %></a></li>
+  <% }) %>
+</ul>
+<br/>

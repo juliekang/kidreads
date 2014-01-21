@@ -10,12 +10,36 @@ KR.Routers.Router = Backbone.Router.extend({
     "users/:id" : "userShow",
     "clubs" : "clubsIndex",
     "clubs/:id" : "clubShow",
-    "search/results/:q/(:filter)" : "searchResults"
+    "search/results/:q/(:filter)" : "searchResults",
+    "streams" : "activityStreamsIndex"
   },
 
   root: function () {
     var view = new KR.Views.Root();
+    var that = this;
+
+    KR.activityStreams.fetch({
+      success: function () {
+        var view = new KR.Views.ActivityStreamsIndex({
+          collection: KR.activityStreams
+        });
+        that._swapView(view);      
+      }
+    });   
     this._swapView(view);
+  },
+
+  activityStreamsIndex: function () {
+    var that = this;
+
+    KR.activityStreams.fetch({
+      success: function () {
+        var view = new KR.Views.ActivityStreamsIndex({
+          collection: KR.activityStreams
+        });
+        that._swapView(view);      
+      }
+    });
   },
 
   booksIndex: function () {
