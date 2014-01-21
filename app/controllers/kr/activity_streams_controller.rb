@@ -4,6 +4,7 @@ class Kr::ActivityStreamsController < ApplicationController
 
   def index
     @activity_streams = current_user.activity_stream_objects
+    render :json => @activity_streams
   end
 
 end
