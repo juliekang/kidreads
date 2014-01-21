@@ -1,9 +1,21 @@
 <br/>
 <h2>Your Activity Stream</h2>
-<ul id="streams_list">
-  <% streams.each( function (stream) { %>
-    <li><%= stream.get('user_id') %> <%= stream.get('activity_verb') %> 
-    <a href="<%= stream.get('url') %>"><%= stream.get('activity_object') %></a></li>
-  <% }) %>
-</ul>
+<div class="row">
+  <div class="col-xs-8">
+    <ul id="streams_list" class="list-group">
+      <% streams.each( function (stream) { %>
+        <li class="list-group-item">
+          <img src="<%= stream.get('image_url') %>" />
+          <% if (stream.get('user_id') == KR.currentUserID) { %>
+            You 
+          <% } else { %>
+          <%= stream.get('first_name') %> <%= stream.get('last_name') %> 
+          <% } %>
+          <%= stream.get('activity_verb') %> 
+          <a href="<%= stream.get('url') %>"><%= stream.get('activity_object') %> <%= stream.get('club_name') %></a>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</div>
 <br/>

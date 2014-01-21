@@ -57,6 +57,10 @@ class User < ActiveRecord::Base
     SecureRandom::urlsafe_base64(16)
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def activity_stream_objects
     parent_ids = parents.pluck(:id)
     child_ids = children.pluck(:id)

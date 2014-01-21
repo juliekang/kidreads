@@ -60,7 +60,20 @@ Book
 
 ActivityStream
   user_id
+  username
+  first_name
+  last_name
+  club_id
+  club_name
   url
-  activity_verb
-  activity_object
+  image_url (of a book, and once club images are created)
+  activity_verb ["finished", "is currently reading", "wishlisted", "posted in", "rated", "reviewed", "created", "joined"]
+  activity_object ["a club: ", book_title]
+  --> actions that trigger addition to activity_streams
+    rating a book
+    reviewing a book
+    adding a book to a list
+    creating a club
+    joining a club
+    posting in a club
 

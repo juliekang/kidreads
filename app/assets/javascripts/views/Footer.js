@@ -24,13 +24,22 @@ KR.Views.Footer = Backbone.View.extend({
   submit: function (event) {
     event.preventDefault();
     var club = $('#new-club-form').serializeJSON();
-    KR.clubs.create(club, { 
-      success: function () {
+
+    club = KR.clubs.create(club, { 
+      success: function (club) {
         $("#new-club-modal").modal('hide');
         $('body').removeClass('modal-open');
         $('.modal-backdrop').remove();
+ 
+        KR.activityStreams.create({
+          url: "/#clubs/" + club.id,
+          activity_verb: 'created',
+          activity_object: 'a club:',
+          club_name: club.get('club_name')     
+        });
       }
     });
+
   },
 
   randomBook: function (event) {

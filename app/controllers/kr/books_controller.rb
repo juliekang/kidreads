@@ -3,8 +3,9 @@ class Kr::BooksController < ApplicationController
   before_filter :require_current_user!
   
   def index
-    @books = current_user.books
-    @book_statuses = current_user.book_statuses   
+    @book_statuses = current_user.book_statuses.includes(:book)
+    book_ids = @book_statuses.map(&:book_id)
+    @reviews = current_user.reviews.where(:book_id => book_ids).order(:book_id)
   end
 
   def create

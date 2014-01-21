@@ -18,4 +18,8 @@ class Club < ActiveRecord::Base
 
   validates :club_name, :club_type, :presence => true
   validates :club_name, :uniqueness => true
+
+  def leader
+    club_memberships.find_by_membership_type('leader').member
+  end
 end

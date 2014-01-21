@@ -55,6 +55,28 @@ KR.Views.BookShow = Backbone.View.extend({
     var newOrExistingStatus = this.model.book_status();
     newOrExistingStatus.set({status: statusVal, book_id: this.model.id});
     newOrExistingStatus.save();
+
+    var verb = '';
+
+    switch (statusVal) {
+    case 'current':
+      verb = 'is currently reading';
+      break;
+    case 'read':
+      verb = 'finished';
+      break;
+    case 'wish':
+      verb = 'wishlisted';
+      break;
+    }
+    console.log(this.model.get('image_url'));
+
+    KR.activityStreams.create({
+      url: "/#books/" + this.model.id,
+      activity_verb: verb,
+      activity_object: this.model.get('title'),
+      image_url: this.model.get('image_url')
+    });   
   }, 
 
   saveRating: function (score) {
@@ -63,10 +85,11 @@ KR.Views.BookShow = Backbone.View.extend({
     newOrExistingReview.set({rating: score, book_id: this.model.id});
     newOrExistingReview.save();
     KR.reviews.reset(newOrExistingReview);
-    KR.activityStreams.add({
-      url: "/books" + this.model.id,
+    KR.activityStreams.create({
+      url: "/#books/" + this.model.id,
       activity_verb: "rated",
-      activity_object: this.model.get('title')
+      activity_object: this.model.get('title'),
+      image_url: this.model.get('image_url')
     });
   }
 

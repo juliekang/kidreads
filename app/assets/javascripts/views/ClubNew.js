@@ -1,6 +1,5 @@
 KR.Views.ClubNew = Backbone.View.extend({
   events: {
-    "click new-club-submit" : "submit"
   },
   
   template: JST["clubs/new"],
@@ -11,12 +10,6 @@ KR.Views.ClubNew = Backbone.View.extend({
     $('#new-club-modal-body').html("testing");
 
     return this;
-  },
-
-  submit: function (event) {
-    event.preventDefault();
-    var club = $('#new-club-form').serializeJSON();
-    KR.clubs.create(club);
   }
   
 });

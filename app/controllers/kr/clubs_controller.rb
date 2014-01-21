@@ -3,8 +3,7 @@ class Kr::ClubsController < ApplicationController
   before_filter :require_current_user!
 
   def index
-    @clubs = current_user.clubs
-    @memberships = ClubMembership.where(member_id: current_user.id)
+    @memberships = current_user.club_memberships.includes(:club => { :members => :club_memberships })
   end
 
   def create
