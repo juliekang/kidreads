@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
   has_many :parents, :through => :i_am_the_child_relationships
   has_many :children, :through => :i_am_the_parent_relationships
   belongs_to :user_type
+  has_many :own_activity_streams, :class_name => "ActivityStream", :foreign_key => :user_id, :primary_key => :id
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
@@ -54,6 +55,14 @@ class User < ActiveRecord::Base
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
+  end
+
+  def activity_stream_objects
+    parent_ids = parents.pluck(:id)
+    child_ids = children.pluck(:id)
+    all_user_ids = [self.id] + parent_ids + child_ids
+    club_ids = clubs.pluck(:id)
+    ActivityStream.where("club_id IN (?) OR user_id IN (?)", club_ids, all_user_ids).order("created_at DESC")
   end
 
   def is_password?(password)

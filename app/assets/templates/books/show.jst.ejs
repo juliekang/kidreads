@@ -1,10 +1,10 @@
-<h1><%= book.get('title') %></h1>
+<h1><%= book.escape('title') %>, by <%= book.escape('author') %></h1>
 <div class="row">
   <div class="col-xs-4">
-    <img src="<%= book.get('image_url')%>"/>
+    <img src="<%= book.escape('image_url') %>"/>
     <div id="rating"></div>
     <br/>
-    <p><b>GoodReads Rating: </b><%= book.get('rating')%> <em>(<%= book.get('ratings_count') %> ratings)</em></p>
+    <p><b>GoodReads Rating: </b><%= book.escape('rating') %> <em>(<%= book.escape('ratings_count') %> ratings)</em></p>
     <form id="add-to-lists">
       <label for="list-selector">Add to List</label>
       <select id="list-selector">
@@ -23,7 +23,7 @@
           Title:
         </td>
         <td>
-          <%= book.get('title') %>
+          <%= book.escape('title') %>
         </td>
       </tr>
       <tr>
@@ -31,7 +31,7 @@
           ISBN Number:
         </td>
         <td>
-          <%= book.get('isbn') %>
+          <%= book.escape('isbn') %>
         </td>
       </tr>
       <tr>
@@ -39,7 +39,7 @@
           Author:
         </td>
         <td>
-          <%= book.get('author') %>
+          <%= book.escape('author') %>
         </td>
       </tr>
       <tr>
@@ -47,7 +47,7 @@
           Genre:
         </td>
         <td>
-          <%= book.get('genre') %>
+          <%= book.escape('genre') %>
         </td>
       </tr>
       <tr>
@@ -55,7 +55,7 @@
           Year of Publication:
         </td>
         <td>
-          <%= book.get('pub_year') %>
+          <%= book.escape('pub_year') %>
         </td>
       </tr>
       <tr>
@@ -63,7 +63,7 @@
           Number of Pages:
         </td>
         <td>
-          <%= book.get('num_pages') %>
+          <%= book.escape('num_pages') %>
         </td>
       </tr>
       <tr>
@@ -71,7 +71,7 @@
           Reading Level:
         </td>
         <td>
-          <%= book.get('reading_level') %>
+          <%= book.escape('reading_level') %>
         </td>
       </tr>
 
@@ -80,3 +80,17 @@
   </div>
 </div>
 
+<div class="row">
+  <h4>Reviews</h4>
+  <table id="reviews_table" class="table table-bordered">
+    <% book.reviews().each( function(review) { %>
+      <tr>
+        <td> 
+          <p><em><%= review.escape('username') %> said on <%= review.escape('date') %>:</em></p>
+          <p><%= review.escape('rating') %> Stars</p>
+          <p><%= review.escape('review') %></p>
+        </td>
+      </tr>
+    <% }); %>
+  </table>
+</div>

@@ -9,6 +9,7 @@ Kidreads::Application.routes.draw do
     resources :reviews
     resources :clubs
     resources :book_statuses
+    resources :activity_streams, :path => "streams", :as => "streams"
   end
 
   get "search/query"

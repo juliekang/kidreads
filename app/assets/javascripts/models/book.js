@@ -13,6 +13,11 @@ KR.Models.Book = Backbone.Model.extend({
       this.current_user_review().set(jsonResp.current_user_review);
       delete jsonResp.current_user_review;
     }
+
+    if(jsonResp.reviews) {
+      this.reviews().set(jsonResp.reviews);
+      delete jsonResp.reviews;
+    }
     return jsonResp;
   },
 
@@ -28,8 +33,13 @@ KR.Models.Book = Backbone.Model.extend({
     if (!this._current_user_review) {
       this._current_user_review = new KR.Models.Review();
     }
-
     return this._current_user_review;
-  }
+  },
 
+  reviews: function () {
+    if(!this._reviews) {
+      this._reviews = new KR.Collections.Reviews([]);
+    }
+    return this._reviews;
+  }
 })

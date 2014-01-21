@@ -44,13 +44,23 @@ BookStatus
   status: (wish, current, read)
 
 Book
-  --> accessed through GoodReads API
+  --> accessed through GoodReads and Amazon API
   isbn
   title
   author
   pub_year
-  genre
   num_pages
+  image_url
+  goodreads_id
+  ratings_count
+  average_rating
   --> might have to be scraped from Scholastic website
   reading_level
+  genre
+
+ActivityStream
+  user_id
+  url
+  activity_verb
+  activity_object
 

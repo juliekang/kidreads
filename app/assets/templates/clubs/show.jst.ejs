@@ -1,13 +1,13 @@
-<h2><%= club.get('club_name') %></h2>
+<h2><%= club.escape('club_name') %></h2>
 <div class="row">
   <div class="col-xs-2">
-    <p><em>Leader: <%= club.get('leader') %></em></p>
+    <p><em>Leader: <%= club.escape('leader') %></em></p>
   </div>
   <div class="col-xs-4 col-xs-offset-6">
     <h4>Member Roster</h4>
     <ul>
     <p><% club.get('members').forEach(function (member) { %></p>
-      <li><%= member.get('username') %>, <%= member.get('membership_type')%></li>
+      <li><%= member.escape('username') %>, <%= member.escape('membership_type')%></li>
     <p><% }); %></p>
     </ul>
   </div>

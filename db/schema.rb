@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140120003359) do
+ActiveRecord::Schema.define(:version => 20140121001255) do
+
+  create_table "activity_streams", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "club_id"
+    t.string   "url"
+    t.string   "activity_verb"
+    t.string   "activity_object"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "activity_streams", ["activity_object"], :name => "index_activity_streams_on_activity_object"
+  add_index "activity_streams", ["activity_verb"], :name => "index_activity_streams_on_activity_verb"
+  add_index "activity_streams", ["club_id"], :name => "index_activity_streams_on_club_id"
+  add_index "activity_streams", ["user_id"], :name => "index_activity_streams_on_user_id"
 
   create_table "book_statuses", :force => true do |t|
     t.integer  "user_id",    :null => false

@@ -1,6 +1,6 @@
 <!-- Buttons -->
 <div class="row">
-  <div class="col-xs-4">
+  <div class="col-xs-6">
     <button id="home-button" class="btn btn-success"><span class="glyphicon glyphicon-book"></span> KidReads</button>
     
     <% if(!KR.currentUserID) { %>
@@ -10,7 +10,7 @@
       <button id="my-profile-button" class="btn btn-primary">My Profile</button>
     <% } %>
   </div>
-  <div class="col-xs-6 col-xs-offset-2">
+  <div class="col-xs-6">
     <form id="searchbox" action="/search/query" method="GET">
       <label for="filter">Filter by: </label>
       <input type="radio" name="filter" value="title" checked>Title

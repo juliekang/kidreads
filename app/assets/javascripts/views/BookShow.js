@@ -7,11 +7,10 @@ KR.Views.BookShow = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, "add remove reset", this.render);
-    this.listenTo(KR.reviews, "add reset change", this._setUpRaty);
+    this.listenTo(KR.reviews, "add reset change", this.render);
   },
 
   render: function () {
-    var that = this;
     var renderedContent = this.template({
       book: this.model
     });
@@ -24,7 +23,6 @@ KR.Views.BookShow = Backbone.View.extend({
     if(book_status) {
       this.$('#' + book_status).attr('selected', 'selected');
     }
-
     return this;
   },
 
@@ -65,6 +63,9 @@ KR.Views.BookShow = Backbone.View.extend({
     newOrExistingReview.set({rating: score, book_id: this.model.get('id')});
     newOrExistingReview.save();
     KR.reviews.reset(newOrExistingReview);
+    KR.activityStream.add({
+      
+    })
   }
 
 });

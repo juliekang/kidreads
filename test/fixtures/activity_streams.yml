@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: activity_streams
+#
+#  id              :integer          not null, primary key
+#  user_id         :integer
+#  club_id         :integer
+#  url             :string(255)
+#  activity_verb   :string(255)
+#  activity_object :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  url: MyString
+  activity_verb: MyString
+  activity_object: MyString
+
+two:
+  user_id: 1
+  url: MyString
+  activity_verb: MyString
+  activity_object: MyString

@@ -14,6 +14,7 @@ class Club < ActiveRecord::Base
 
   has_many :club_memberships
   has_many :members, :through => :club_memberships
+  has_many :activity_streams
 
   validates :club_name, :club_type, :presence => true
   validates :club_name, :uniqueness => true

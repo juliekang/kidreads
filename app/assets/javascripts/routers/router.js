@@ -54,7 +54,11 @@ KR.Routers.Router = Backbone.Router.extend({
         }
       });
     } else {
-      callback(book);
+      book.fetch({
+        success: function () {
+          callback(book);
+        }
+      });
     }
   },
 
