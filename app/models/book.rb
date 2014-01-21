@@ -25,6 +25,7 @@ class Book < ActiveRecord::Base
   mapping do
     indexes :title,  :analyzer => 'snowball', :boost => 100
     indexes :author, :analyzer => 'snowball', :boost => 30
+    indexes :ratings_count, :analyzer => 'snowball', :boost => 50
   end
 
   attr_accessible :title, :author, :isbn, :pub_year, :genre, :num_pages, :reading_level, :image_url,

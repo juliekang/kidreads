@@ -1,4 +1,6 @@
-<h1><%= book.escape('title') %>, by <%= book.escape('author') %></h1>
+<div class="page-header">
+  <h1><%= book.escape('title') %> <small><%= book.escape('author') %></small></h1>
+</div>
 <div class="row">
   <div class="col-xs-4">
     <img src="<%= book.escape('image_url') %>"/>

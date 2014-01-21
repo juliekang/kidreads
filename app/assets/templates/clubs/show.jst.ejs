@@ -1,8 +1,7 @@
-<h2><%= club.escape('club_name') %></h2>
+<div class="page-header">
+  <h1><%= club.escape('club_name') %> <small>Leader: <%= club.escape('leader') %></small></h1>
+</div>
 <div class="row">
-  <div class="col-xs-2">
-    <p><em>Leader: <%= club.escape('leader') %></em></p>
-  </div>
   <div class="col-xs-4 col-xs-offset-6">
     <h4>Member Roster</h4>
     <ul>

@@ -1,13 +1,10 @@
 <% if (role == 'Parent') { %>
-  <button id="my-kids-button" class="btn btn-primary">My Kids</button>
-  <button id="my-clubs-button" data-href="/#clubs" class="btn btn-primary">My Clubs</button>
   <button id="new-club-button" class="btn btn-default" data-toggle="modal" data-target="#new-club-modal">Make a New Club</button>
-<% } else if (role == 'Kid') { %>
-  <button id="my-clubs-button" data-href="/#clubs" class="btn btn-primary">My Clubs</button>
 <% } else if (role == 'Teacher') { %>
   <button id="my-class-button" class="btn btn-primary">My Class</button>
   <button id="new-class-button" class="btn btn-default" data-toggle="modal" data-target="#new-class-modal">Add a New Class</button>
 <% } %>
+<button id="my-clubs-button" data-href="/#clubs" class="btn btn-primary">My Clubs</button>
 <button id="my-books-button" data-href="/#books" class="btn btn-primary">My Books</button>
 <button id="random-book-button" class="btn btn-info">Discover Random Book</button>
 
@@ -17,6 +14,7 @@ $( function() {
         location.href = $(this).attr("data-href");
     });
 });
+
 </script>
 
 <div id="new-club-modal" class="modal fade">

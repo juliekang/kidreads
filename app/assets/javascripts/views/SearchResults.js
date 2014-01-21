@@ -4,10 +4,6 @@ KR.Views.SearchResults = Backbone.View.extend({
 
   template: JST["search/results"],
 
-  initialize: function () {
-    //this.model.on("change:searchResults", this.render, this)
-  },
-
   render: function () {
     var renderedContent = this.template();
     var that = this;

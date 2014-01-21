@@ -1,36 +1,24 @@
-<!-- Buttons -->
-<div class="row">
-  <div class="col-xs-6">
-    <button id="home-button" class="btn btn-success"><span class="glyphicon glyphicon-book"></span> KidReads</button>
-    
-    <% if(!KR.currentUserID) { %>
-      <button id="new-account-button" class="btn btn-primary">Create Account</button>
-      <button id="sign-in-button" class="btn btn-primary">Sign In</button>
-    <% } else { %>
-      <button id="my-profile-button" class="btn btn-primary">My Profile</button>
-    <% } %>
-  </div>
-  <div class="col-xs-6">
-    <form id="searchbox" action="/search/query" method="GET">
-      <label for="filter">Filter by: </label>
-      <input type="radio" name="filter" value="title" checked>Title
-      <input type="radio" name="filter" value="author">Author
-      <input type="text" name="q" name="query">
-      <input type="submit" value="Search">
-    </form>
-  </div>
-</div>
-
+<ul class="nav nav-pills">
+  <li><a href="/"><span class="glyphicon glyphicon-book"></span> KidReads</button></a></li>
+  <% if(!KR.currentUserID) { %>
+    <li><a href="/users/new">Create Account</a></li>
+    <li><a href="/session/new">Sign In</a></li>
+  <% } else { %>  
+    <li><a href="/#users/<%= KR.currentUserID%>">My Profile</a></li>
+    <div class="col-xs-6 col-xs-offset-3">
+    <li>
+      <form id="searchbox" action="/search/query" method="GET">
+        <label for="filter">Filter by: </label>
+        <input type="radio" name="filter" value="title" checked>Title
+        <input type="radio" name="filter" value="author">Author
+        <input type="text" name="q" name="query">
+        <input type="submit" value="Search">
+      </form>
+    </li>
+    </div>
+  <% } %>
+</ul>
 <!-- Submits -->
 
 <script>
-  $('#home-button').click(function() {
-   window.location = "/";
-  });
-  $('#new-account-button').click(function() {
-   window.location = "/users/new";
-  });
-  $('#sign-in-button').click(function() {
-    window.location = "/session/new";
-  });
 </script>

@@ -1,3 +1,4 @@
-<img src="<%= book.escape('image_url') %>"/>
-<a data-id="<%= book.escape('id') %>" href="/#books/<%= book.escape('id') %>"><%= book.escape('title') %></a>
+<a class="list-group-item" data-id="<%= book.escape('id') %>" href="/#books/<%= book.escape('id') %>"><img src="<%= book.escape('image_url') %>"/>
+<%= book.escape('title') %>
 <div id="book_data"></div>
+</a>
