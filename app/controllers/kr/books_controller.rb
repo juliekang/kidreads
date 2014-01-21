@@ -4,7 +4,7 @@ class Kr::BooksController < ApplicationController
   
   def index
     @books = current_user.books
-    @book_statuses = BookStatus.where(user_id: current_user.id)
+    @book_statuses = current_user.book_statuses   
   end
 
   def create

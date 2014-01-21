@@ -16,8 +16,7 @@ json.books(@user.books) do |book|
   json.id book.id
   json.title book.title
   json.image_url book.image_url
-  bookStatus = BookStatus.find_by_user_id_and_book_id(@user.id, book.id).status
-  json.status bookStatus
+  json.book_status BookStatus.find_by_user_id_and_book_id(@user.id, book.id)
 end
 
 json.children(@user.children) do |child|

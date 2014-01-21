@@ -20,7 +20,6 @@ KR.Views.BooksIndex = Backbone.View.extend({
 
       var status = book.book_status().get('status');
 
-      // console.log(status)
       if(status == 'current') {
         that.$('#current').append(view.render().$el);
       } else if(status == 'read') {

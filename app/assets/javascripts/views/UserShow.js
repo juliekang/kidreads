@@ -7,6 +7,7 @@ KR.Views.UserShow = Backbone.View.extend({
   template: JST["users/show"],
 
   render: function () {
+
     var renderedContent = this.template({
       user: this.model,
       age: this._calcAge(this.model.birthdate)
@@ -22,8 +23,9 @@ KR.Views.UserShow = Backbone.View.extend({
     if($('#books').html().length > 0) {
       $('#books').html('');
     } else {
-       var view = new KR.Views.BooksIndex({
-        collection: new KR.Collections.Books(that.model.get('books'))
+      var collection = that.model.books();
+      var view = new KR.Views.BooksIndex({
+        collection: collection
       });
 
       $('#books').html(view.render().$el);     
