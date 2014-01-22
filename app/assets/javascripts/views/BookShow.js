@@ -1,6 +1,7 @@
 KR.Views.BookShow = Backbone.View.extend({
   events: {
     "change #list-selector" : "listSelected",
+    "click button#new-review-submit" : "submit"
   },
   
   template: JST["books/show"],
@@ -60,7 +61,7 @@ KR.Views.BookShow = Backbone.View.extend({
 
     switch (statusVal) {
     case 'current':
-      verb = 'is currently reading';
+      verb = 'started reading';
       break;
     case 'read':
       verb = 'finished';
@@ -91,6 +92,35 @@ KR.Views.BookShow = Backbone.View.extend({
       activity_object: this.model.get('title'),
       image_url: this.model.get('image_url')
     });
-  }
+  },
+
+  submit: function (event) {
+    event.preventDefault();
+    var that = this;
+    var review = $('#new-review-form').serializeJSON();
+
+    var newOrExistingReview = this.model.current_user_review();
+    debugger
+    newOrExistingReview.set({
+      content: review['content'], 
+      book_id: this.model.id
+    });
+
+    newOrExistingReview.save({
+       success: function (review) {
+        KR.reviews.add(review);
+        KR.activityStreams.create({
+          url: "/#books/" + that.model.id,
+          activity_verb: "reviewed",
+          activity_object: that.model.get('title'),
+          image_url: that.model.get('image_url')
+        });
+      }     
+    }); 
+
+    $("#new-review-modal").modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+  },
 
 });

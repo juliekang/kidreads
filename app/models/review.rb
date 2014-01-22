@@ -12,7 +12,7 @@
 #
 
 class Review < ActiveRecord::Base
-  attr_accessible :book_id, :user_id, :rating, :review
+  attr_accessible :book_id, :user_id, :rating, :content
 
   belongs_to :user
   belongs_to :book

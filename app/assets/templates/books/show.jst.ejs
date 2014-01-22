@@ -83,16 +83,41 @@
 </div>
 
 <div class="row">
-  <h4>Reviews</h4>
+  <h4>Reviews <button id="new-review-button" data-toggle="modal" data-target="#new-review-modal" class="btn btn-primary">Write Review</button></h4>
   <table id="reviews_table" class="table table-bordered">
     <% book.reviews().each( function(review) { %>
       <tr>
         <td> 
           <p><em><%= review.escape('username') %> said on <%= review.escape('date') %>:</em></p>
-          <p><%= review.escape('rating') %> Stars</p>
-          <p><%= review.escape('review') %></p>
+          <% if(review.get('rating')) { %>
+            <p><%= review.escape('rating') %> Stars</p>
+          <% } %>
+          <p><%= review.escape('content') %></p>
         </td>
       </tr>
     <% }); %>
   </table>
 </div>
+
+<div id="new-review-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= book.escape('title')%></h4>
+      </div>
+      <div id="new-review-modal-body" class="modal-body">
+        <form id="new-review-form">
+          <div class="form-group">
+            <label for="content">My Review</label>
+            <textarea name="content" rows="10" cols="90" placeholder="ex: This book has great characters and is fun to read."></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" id="new-review-submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
