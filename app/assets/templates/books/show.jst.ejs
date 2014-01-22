@@ -84,15 +84,15 @@
 
 <div class="row">
   <h4>Reviews <button id="new-review-button" data-toggle="modal" data-target="#new-review-modal" class="btn btn-primary">Write Review</button></h4>
-  <table id="reviews_table" class="table table-bordered">
+  <table id="reviews_table" class="table table-striped">
     <% book.reviews().each( function(review) { %>
       <tr>
         <td> 
           <p><em><%= review.escape('username') %> said on <%= review.escape('date') %>:</em></p>
           <% if(review.get('rating')) { %>
-            <p><%= review.escape('rating') %> Stars</p>
+            <p><%= review.escape('rating') %> Stars: 
           <% } %>
-          <p><%= review.escape('content') %></p>
+          <%= review.escape('content') %></p>
         </td>
       </tr>
     <% }); %>

@@ -8,7 +8,7 @@ KR.Views.BookShow = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, "add remove reset", this.render);
-    this.listenTo(KR.reviews, "add reset change", this.render);
+    this.listenTo(this.model.reviews(), "add reset change set", this.render);
   },
 
   render: function () {
@@ -17,7 +17,6 @@ KR.Views.BookShow = Backbone.View.extend({
     });
 
     this.$el.html(renderedContent);
-
     this._setUpRaty();
 
     var book_status = this.model.book_status().get('status');
@@ -38,10 +37,10 @@ KR.Views.BookShow = Backbone.View.extend({
 
     // Initializing with personal rating or average rating, if available
     var personalReview = this.model.current_user_review();
-    var personalRating = personalReview.get('rating');
     var rating = this.model.get('rating');
 
-    if(personalRating) {
+    if(personalReview) {
+      var personalRating = personalReview.get('rating');
       that.$('#rating').raty('score', personalRating);
       that.$('#rating').append('<em>Your Rating: ' + personalRating + '<em>');
     } else if (rating) {
@@ -70,7 +69,6 @@ KR.Views.BookShow = Backbone.View.extend({
       verb = 'wishlisted';
       break;
     }
-    console.log(this.model.get('image_url'));
 
     KR.activityStreams.create({
       url: "/#books/" + this.model.id,
@@ -81,42 +79,40 @@ KR.Views.BookShow = Backbone.View.extend({
   }, 
 
   saveRating: function (score) {
-    var newOrExistingReview = this.model.current_user_review();
-    
-    newOrExistingReview.set({rating: score, book_id: this.model.id});
-    newOrExistingReview.save();
-    KR.reviews.reset(newOrExistingReview);
-    KR.activityStreams.create({
-      url: "/#books/" + this.model.id,
-      activity_verb: "rated",
-      activity_object: this.model.get('title'),
-      image_url: this.model.get('image_url')
+    var that = this;
+    var review = this.model.current_user_review() || new KR.Models.Review();
+    review.set({rating: score, book_id: that.model.id});
+    this.model.reviews().add(review, {merge: true});
+    review.save({}, {
+      success: function (review) {
+        KR.activityStreams.create({
+          url: "/#books/" + that.model.id,
+          activity_verb: "rated",
+          activity_object: that.model.get('title'),
+          image_url: that.model.get('image_url')
+        });
+      }
     });
   },
 
   submit: function (event) {
     event.preventDefault();
     var that = this;
-    var review = $('#new-review-form').serializeJSON();
+    var formData = $('#new-review-form').serializeJSON();
 
-    var newOrExistingReview = this.model.current_user_review();
-    debugger
-    newOrExistingReview.set({
-      content: review['content'], 
-      book_id: this.model.id
-    });
-
-    newOrExistingReview.save({
-       success: function (review) {
-        KR.reviews.add(review);
+    var review = this.model.current_user_review() || new KR.Models.Review();
+    review.set({content: formData['content'], book_id: that.model.id});
+    this.model.reviews().add(review, {merge: true});
+    review.save({}, {
+      success: function (review) {
         KR.activityStreams.create({
           url: "/#books/" + that.model.id,
           activity_verb: "reviewed",
           activity_object: that.model.get('title'),
           image_url: that.model.get('image_url')
         });
-      }     
-    }); 
+      }
+    });
 
     $("#new-review-modal").modal('hide');
     $('body').removeClass('modal-open');
