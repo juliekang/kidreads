@@ -2,10 +2,10 @@
   <h1><%= club.escape('club_name') %> <small>Leader: <%= club.escape('leader') %></small></h1>
 </div>
 <div class="row">
-  <div id="club_streams" class="col-xs-8">
+  <div id="club_streams" class="col-xs-9">
   </div>
 
-  <div class="col-xs-4 list-group">
+  <div class="col-xs-3 list-group">
     <h4>Member Roster</h4>
     <% club.members().each(function (member) { %>
       <a class="list-group-item" href="/#users/<%= member.id %>"><%= member.escape('username') %>, <%= member.escape('membership_type')%></a>
