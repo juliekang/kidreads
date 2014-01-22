@@ -22,4 +22,9 @@ class Club < ActiveRecord::Base
   def leader
     club_memberships.find_by_membership_type('leader').member
   end
+
+  def activity_stream_objects
+    member_ids = members.pluck(:id)
+    ActivityStream.where("club_id = (?) OR user_id IN (?)", self.id, member_ids).order("created_at DESC")
+  end
 end

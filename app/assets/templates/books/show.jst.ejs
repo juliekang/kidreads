@@ -21,66 +21,38 @@
   <div class="col-xs-8">
     <table class="table table-bordered">
       <tr>
-        <td>
-          Title:
-        </td>
-        <td>
-          <%= book.escape('title') %>
-        </td>
+        <td>Title:</td>
+        <td><%= book.escape('title') %></td>
       </tr>
       <tr>
-        <td>
-          ISBN Number:
-        </td>
-        <td>
-          <%= book.escape('isbn') %>
-        </td>
+        <td>ISBN Number:</td>
+        <td><%= book.escape('isbn') %></td>
       </tr>
       <tr>
-        <td>
-          Author:
-        </td>
-        <td>
-          <%= book.escape('author') %>
-        </td>
+        <td>Author:</td>
+        <td><%= book.escape('author') %></td>
       </tr>
       <tr>
-        <td>
-          Genre:
-        </td>
-        <td>
-          <%= book.escape('genre') %>
-        </td>
+        <td>Genre:</td>
+        <td><%= book.escape('genre') %></td>
       </tr>
       <tr>
-        <td>
-          Year of Publication:
-        </td>
-        <td>
-          <%= book.escape('pub_year') %>
-        </td>
+        <td>Year of Publication:</td>
+        <td><%= book.escape('pub_year') %></td>
       </tr>
       <tr>
-        <td>
-          Number of Pages:
-        </td>
-        <td>
-          <%= book.escape('num_pages') %>
-        </td>
+        <td>Number of Pages:</td>
+        <td><%= book.escape('num_pages') %></td>
       </tr>
       <tr>
-        <td>
-          Reading Level:
-        </td>
-        <td>
-          <%= book.escape('reading_level') %>
-        </td>
+        <td>Reading Level:</td>
+        <td><%= book.escape('reading_level') %></td>
       </tr>
-
     </table>
-
   </div>
 </div>
+
+<!-- Displaying all reviews -->
 
 <div class="row">
   <h4>Reviews <button id="new-review-button" data-toggle="modal" data-target="#new-review-modal" class="btn btn-primary">Write Review</button></h4>
@@ -90,14 +62,16 @@
         <td> 
           <p><em><%= review.escape('username') %> said on <%= review.escape('date') %>:</em></p>
           <% if(review.get('rating')) { %>
-            <p><%= review.escape('rating') %> Stars: 
+            <p><b><%= review.escape('rating') %> Stars</b></p> 
           <% } %>
-          <%= review.escape('content') %></p>
+          <p><%= review.escape('content') %></p>
         </td>
       </tr>
     <% }); %>
   </table>
 </div>
+
+<!-- Review Modal -->
 
 <div id="new-review-modal" class="modal fade">
   <div class="modal-dialog">

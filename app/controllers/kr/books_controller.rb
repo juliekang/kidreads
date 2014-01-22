@@ -9,7 +9,7 @@ class Kr::BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(params[:book]);
+    @book = Book.new(params[:book])
 
     if @book.save
       render :json => @book
@@ -22,10 +22,5 @@ class Kr::BooksController < ApplicationController
     @book = Book.find(params[:id])
     @reviews = @book.reviews
   end
-
-  def update
-
-  end
-
 
 end

@@ -2,12 +2,15 @@
   <h1><%= club.escape('club_name') %> <small>Leader: <%= club.escape('leader') %></small></h1>
 </div>
 <div class="row">
-  <div class="col-xs-4 col-xs-offset-6">
+  <div id="club_streams" class="col-xs-8">
+  </div>
+
+  <div class="col-xs-4">
     <h4>Member Roster</h4>
     <ul>
-    <p><% club.get('members').forEach(function (member) { %></p>
-      <li><%= member.escape('username') %>, <%= member.escape('membership_type')%></li>
-    <p><% }); %></p>
+    <% club.members().each(function (member) { %>
+      <li><a href="/#users/<%= member.id %>"><%= member.escape('username') %>, <%= member.escape('membership_type')%></a></li>
+    <% }); %>
     </ul>
   </div>
 </div>

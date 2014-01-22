@@ -22,7 +22,7 @@ class Kr::ClubsController < ApplicationController
 
   def show
     @club = Club.find(params[:id])
-    render :json => @club
+    @club_streams = @club.activity_stream_objects
   end
 
   def update

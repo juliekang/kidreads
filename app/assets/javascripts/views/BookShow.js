@@ -41,8 +41,10 @@ KR.Views.BookShow = Backbone.View.extend({
 
     if(personalReview) {
       var personalRating = personalReview.get('rating');
-      that.$('#rating').raty('score', personalRating);
-      that.$('#rating').append('<em>Your Rating: ' + personalRating + '<em>');
+      if(personalRating) {
+        that.$('#rating').raty('score', personalRating);
+        that.$('#rating').append('<em>Your Rating: ' + personalRating + '<em>');
+      }
     } else if (rating) {
       that.$('#rating').raty('score', rating);
     }
