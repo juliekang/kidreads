@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_current_user!, :only => [:show, :update]
+  before_filter :require_current_user!, :only => [:show, :edit, :update]
   before_filter :require_no_current_user!, :only => [:create, :new]
 
   def index
@@ -28,6 +28,20 @@ class UsersController < ApplicationController
   end
 
   def update
+    redirect_to edit_user_url(current_user.id) if params[:id] != current_user.id.to_s
+    @user = User.find(params[:id])
 
+    if @user.update_attributes(params[:user])
+      redirect_to root_url
+    else
+      render :json => @user.errors.full_messages, :status => 422
+    end
   end
+
+  def edit
+    redirect_to edit_user_url(current_user.id) if params[:id] != current_user.id.to_s
+    @user = current_user
+    @user_types = UserType.all
+  end
+
 end

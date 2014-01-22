@@ -22,6 +22,6 @@ module SessionsHelper
   end
 
   def require_no_current_user!
-    redirect_to user_url(current_user) unless current_user.nil?
+    redirect_to root_url unless current_user.nil?
   end
 end
