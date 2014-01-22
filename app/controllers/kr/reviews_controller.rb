@@ -4,7 +4,6 @@ class Kr::ReviewsController < ApplicationController
 
   def index
     @reviews = current_user.reviews
-    render :json => @reviews
   end
 
   def create

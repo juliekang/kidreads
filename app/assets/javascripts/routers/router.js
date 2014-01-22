@@ -118,8 +118,7 @@ KR.Routers.Router = Backbone.Router.extend({
       var view = new KR.Views.ClubShow({
         model: club
       });
-      that._swapView(view);   
-      club.fetch();
+      that._swapView(view);
     });
   },
 
@@ -135,7 +134,11 @@ KR.Routers.Router = Backbone.Router.extend({
         }
       });
     } else {
-      callback(club);
+      club.fetch({
+        success: function () {
+          callback(club);
+        }
+      });
     }
   },
 

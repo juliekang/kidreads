@@ -18,9 +18,6 @@ window.KR = {
     var headerView = new KR.Views.Header();
     $('#header').html(headerView.render().$el);
 
-    var footerView = new KR.Views.Footer({ role: KR.currentRole });
-    $('#footer').html(footerView.render().$el);
-
     $.when(
       booksFetch, clubsFetch, reviewsFetch, activityStreamsFetch
     ).then(function () {

@@ -20,17 +20,15 @@
   <div class="container">
     <div id="header"></div>
 
-     <%= yield %>
-
     <% if current_user %>
-
       <div align="right">
         <p>You are: <%= current_user.username %> <%= button_to "Logout", session_url, :method => :delete %></p>
       </div>
-
-      <div id="footer">
-      </div>
     <% end %>
+
+    <%= yield %>
+
+
   </div>
   </body>
 </html>

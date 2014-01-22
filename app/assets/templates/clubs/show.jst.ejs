@@ -5,12 +5,10 @@
   <div id="club_streams" class="col-xs-8">
   </div>
 
-  <div class="col-xs-4">
+  <div class="col-xs-4 list-group">
     <h4>Member Roster</h4>
-    <ul>
     <% club.members().each(function (member) { %>
-      <li><a href="/#users/<%= member.id %>"><%= member.escape('username') %>, <%= member.escape('membership_type')%></a></li>
+      <a class="list-group-item" href="/#users/<%= member.id %>"><%= member.escape('username') %>, <%= member.escape('membership_type')%></a>
     <% }); %>
-    </ul>
   </div>
 </div>
