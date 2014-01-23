@@ -8,8 +8,9 @@ KR.Views.Header = Backbone.View.extend({
   template: JST["root/header"],
 
   initialize: function () {
-    this.listenTo(KR.clubs, "add remove reset", this.render)
-    this.listenTo(KR.books, "all", this.render)
+    this.listenTo(KR.clubs, "add remove reset", this.render);
+    this.listenTo(KR.books, "all", this.render);
+    this.listenTo(KR.kids, "all", this.render);
   },
 
   render: function () {

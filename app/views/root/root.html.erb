@@ -1,2 +1,17 @@
 <div id="kr_pane"></div>
 <br/>
+
+<% if !logged_in? %>
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-xs-8">
+      <h1>Welcome to KidReads!</h1>
+      <p>A place to discover, discuss, and share children's books.</p>
+      <p><a id="demo_login" class="btn btn-primary btn-lg" role="button">Click Here for Demo</a></p>
+    </div>
+    <div class="col-xs-2">
+      <img src="/assets/books.png" style="height:auto; width:auto; max-height:300px;">
+    </div>
+  </div>
+</div>
+<% end %>

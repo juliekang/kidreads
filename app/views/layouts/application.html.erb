@@ -3,6 +3,7 @@
   <head>
     <title>Welcome to KidReads!</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag    "//netdna.bootstrapcdn.com/bootswatch/3.0.3/amelia/bootstrap.min.css" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <% currentRole = current_user.user_type.label if current_user %>
@@ -27,7 +28,6 @@
     <% end %>
 
     <%= yield %>
-
 
   </div>
   </body>

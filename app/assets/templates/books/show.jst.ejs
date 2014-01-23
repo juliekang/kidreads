@@ -17,8 +17,8 @@
       </select>
     </form>
   </div>
-
   <div class="col-xs-8">
+    <h4>Book Details</h4>
     <table class="table table-bordered">
       <tr>
         <td>Title:</td>
@@ -55,24 +55,25 @@
 <!-- Displaying all reviews -->
 
 <div class="row">
-  <h4>Reviews <button id="new-review-button" data-toggle="modal" data-target="#new-review-modal" class="btn btn-primary">Write Review</button></h4>
-  <table id="reviews_table" class="table table-striped">
-    <% book.reviews().each( function(review) { %>
-      <tr>
-        <td> 
-          <% if(review.get('user_id') == KR.currentUserID) { %>
-            <p><em>You said:</em></p>
-          <% } else { %>
-          <p><em><%= review.escape('username') %> said:</em></p>
-          <% } %>
-          <% if(review.get('rating')) { %>
-            <p><b><%= review.escape('rating') %> Stars</b></p> 
-          <% } %>
-          <p><%= review.escape('content') %></p>
-        </td>
-      </tr>
-    <% }); %>
-  </table>
+    <h2>Reviews <button id="new-review-button" data-toggle="modal" data-target="#new-review-modal" class="btn btn-primary">Write Review</button></h2>
+    <br/>
+    <table id="reviews_table" class="table table-striped">
+      <% book.reviews().each( function(review) { %>
+        <tr>
+          <td> 
+            <% if(review.get('user_id') == KR.currentUserID) { %>
+              <p><em>You said:</em></p>
+            <% } else { %>
+            <p><em><%= review.escape('username') %> said:</em></p>
+            <% } %>
+            <% if(review.get('rating')) { %>
+              <p><b><%= review.escape('rating') %> Stars</b></p> 
+            <% } %>
+            <p><%= review.escape('content') %></p>
+          </td>
+        </tr>
+      <% }); %>
+    </table>
 </div>
 
 <!-- Review Modal -->

@@ -2,68 +2,107 @@
 <% method = (user.persisted? ? "put" : "post") %>
 <% message = (user.persisted? ? "Update user" : "Create user") %>
 
-<form action="<%= action %>" method="post">
+<form role="form" action="<%= action %>" method="post">
   <input
-     name="_method"
-     type="hidden"
-     value="<%= method %>">
+  name="_method"
+  type="hidden"
+  value="<%= method %>">
   <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
+  name="authenticity_token"
+  type="hidden"
+  value="<%= form_authenticity_token %>">
 
-  <label for="user_user_type">Type of Account</label>
-  <br/>
-  <br/>
-  <% @user_types.each do |type| %>
-    <input name="user[user_type]" 
-           value="<%= type.label %>"
-           id="user_user_type<%= type.id %>"
-           type="radio"><%= type.label %>
+  <div class="form-group">
+    <label for="user_user_type">Type of Account</label>
+    <% @user_types.each do |type| %>
+    <br/>
+    <input name="user[user_type_id]" 
+    value="<%= type.id %>"
+    id="user_user_type"
+    type="radio"> <%= type.label %>
     <br/>
     <%= type.description %>
     <br/>
-    <br/>
-  <% end %>
+    <% end %>
+  </div>
 
-  <label for="user_username">Username</label>
-  <input
-     id="user_username"
-     name="user[username]"
-     value="<%= user.username%>"
-     type="text">
-  <br>
+  <div class="row">
+    <div class="col-xs-4">
+     <div class="form-group">
+      <label for="user_username">Username *required</label>
+      <input
+      class="form-control" 
+      id="user_username"
+      name="user[username]"
+      value="<%= user.username%>"
+      type="text">
+    </div>
+    <div class="form-group">
+      <label for="user_password">Password *required</label>
+      <input
+      class="form-control"
+      id="user_password"
+      name="user[password]"
+      type="password">
+    </div>
+    <div class="form-group">
+      <label for="user_email">Email Address *required</label>
+      <input
+      class="form-control" 
+      id="user_email"
+      name="user[email]"
+      value="<%= user.email%>"
+      type="text">
+    </div>
+    <div class="form-group">
+      <label for="user_first_name">First Name *required</label>
+      <input
+      class="form-control" 
+      id="user_first_name"
+      name="user[first_name]"
+      value="<%= user.first_name%>"
+      type="text">
+    </div>
+    <div class="form-group">
+      <label for="user_last_name">Last Name *required</label>
+      <input
+      class="form-control" 
+      id="user_last_name"
+      name="user[last_name]"
+      value="<%= user.last_name%>"
+      type="text">
+      <br>  
+    </div>
+  </div>
 
-  <label for="user_password">Password</label>
-  <input
-     id="user_password"
-     name="user[password]"
-     type="password">
-  <br>
-
-  <label for="user_email">Email Address</label>
-  <input
-     id="user_email"
-     name="user[email]"
-     value="<%= user.email%>"
-     type="text">
-  <br>
-
-  <label for="user_first_name">First Name</label>
-  <input
-     id="user_first_name"
-     name="user[first_name]"
-     value="<%= user.first_name%>"
-     type="text">
-  <br>
-
-  <label for="user_last_name">Last Name (initial only for kids!)</label>
-  <input
-     id="user_last_name"
-     name="user[last_name]"
-     value="<%= user.last_name%>"
-     type="text">
-  <br>  
-
-  <input type="submit" value="<%= message %>">
+  <div class="col-xs-4 col-xs-offset-1">
+   <div class="form-group">
+    <label for="user_city">City</label>
+    <input
+    class="form-control" 
+    id="user_city"
+    name="user[city]"
+    value="<%= user.city%>"
+    type="text">
+   </div>
+   <div id="state" class="form-group">
+    <label for="user_state">State</label>
+    <input
+    class="form-control"
+    id="user_state"
+    name="user[state]"
+    type="text">
+   </div>
+   <div class="form-group">
+    <label for="user_birthday">Birthdate</label>
+    <input
+    class="form-control" 
+    id="user_birthday"
+    name="user[birthday]"
+    value="<%= user.email%>"
+    type="date">
+   </div>
+   <input type="submit" value="<%= message %>">
+  </div>
+  
 </form>

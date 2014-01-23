@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   before_filter :require_no_current_user!, :only => [:create, :new]
 
   def index
-    @users = User.all
+    if logged_in?
+      @users = current_user.children
+    else
+      @users = nil
+    end
     render :json => @users
   end
 

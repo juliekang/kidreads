@@ -15,18 +15,37 @@ KR.Routers.Router = Backbone.Router.extend({
   },
 
   root: function () {
-    var view = new KR.Views.Root();
+    console.log("root!")
     var that = this;
 
-    KR.activityStreams.fetch({
-      success: function () {
-        var view = new KR.Views.ActivityStreamsIndex({
-          collection: KR.activityStreams
-        });
-        that._swapView(view);      
+    if (KR.currentUserID) {
+      console.log("current user!")
+      KR.activityStreams.fetch({
+        success: function () {
+          var view = new KR.Views.ActivityStreamsIndex({
+            collection: KR.activityStreams
+          });
+          that._swapView(view);      
+        }
+      });
+    } else {
+      console.log("new user!")
+
+      KR.randomBooks = new KR.Collection.Books();
+      for(var i = 0; i < 100; i++) {
+        KR.randomBooks.add(this._randomBook)
       }
-    });   
-    this._swapView(view);
+      var view = new KR.Views.SplashPage({
+        collection: KR.randomBooks
+      });
+      this._swapView(view);
+    }
+  },
+
+  _randomBook: function (event) {
+    var bookId = Math.floor(Math.random() * 1000);
+    var book = KR.Models.Book.fetch( { id: bookId });
+    return book;
   },
 
   activityStreamsIndex: function () {

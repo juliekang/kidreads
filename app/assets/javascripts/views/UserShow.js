@@ -7,10 +7,9 @@ KR.Views.UserShow = Backbone.View.extend({
   template: JST["users/show"],
 
   render: function () {
-
     var renderedContent = this.template({
       user: this.model,
-      age: this._calcAge(this.model.birthdate)
+      age: this._calcAge(this.model.get('birthday'))
     });
     this.$el.html(renderedContent);
     return this;
@@ -52,6 +51,6 @@ KR.Views.UserShow = Backbone.View.extend({
   },
 
   _calcAge: function (birthday) {
-    return ~~((Date.now() - birthday) / (31557600000));
+    return ~~((Date.now() - new Date(birthday)) / (31557600000));
   }
 });
