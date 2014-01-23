@@ -1,7 +1,8 @@
 KR.Views.Header = Backbone.View.extend({
   events: {
     "submit form#searchbox" : "goSearch",
-    "click button#new-club-submit" : "submit",
+    "click button#new-club-submit" : "submitClub",
+    "click button#new-kid-submit" : "submitKid",
     "click button#random-book-button" : "randomBook"
   },
   
@@ -33,7 +34,7 @@ KR.Views.Header = Backbone.View.extend({
     Backbone.history.navigate(query_string, {trigger: true});
   },
 
-  submit: function (event) {
+  submitClub: function (event) {
     event.preventDefault();
     var club = $('#new-club-form').serializeJSON();
 
@@ -41,13 +42,34 @@ KR.Views.Header = Backbone.View.extend({
       success: function (club) {
         KR.activityStreams.create({
           url: "/#clubs/" + club.id,
-          activity_verb: 'created',
+          activity_verb: 'added',
           activity_object: 'a club:',
           club_name: club.get('club_name')   
         });
       }
     });
     $("#new-club-modal").modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+  },
+
+  submitKid: function (event) {
+    event.preventDefault();
+    var kid = $('#new-kid-form').serializeJSON();
+    kid.user_type_id = 1;
+
+    kid = KR.kids.create(kid, { 
+      success: function (kid) {
+        KR.activityStreams.create({
+          url: "/#users/" + kid.id,
+          activity_verb: 'added',
+          activity_object: 'a kid: ' + kid.get('first_name')
+        });
+        console.log('activity stream created')
+      }
+    });
+    kid.fetch();
+    $("#new-kid-modal").modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
   },

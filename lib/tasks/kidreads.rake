@@ -144,10 +144,9 @@ namespace :kidreads do
     Book.where(average_rating: nil).find_each do |book|
       result = client.book(book.goodreads_id)
 
-      book.isbn = result["isbn"]
+      book.isbn = result["isbn"] if !Book.find_by_isbn(result["isbn1"])
       book.image_url = result["image_url"]
       book.ratings_count = result["ratings_count"]
-      book.ratings_sum = result["ratings_sum"]
       book.num_pages = result["num_pages"]
       book.average_rating = result["average_rating"]
       pp %Q<#{result["title"]} -- #{result["isbn"]}>

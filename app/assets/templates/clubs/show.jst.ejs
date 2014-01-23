@@ -6,9 +6,35 @@
   </div>
 
   <div class="col-xs-3 list-group">
-    <h4>Member Roster</h4>
+    <h4>Member Roster <button id="new-member-button" data-toggle="modal" data-target="#new-member-modal" class="btn btn-primary">Add Member</button></h4>
     <% club.members().each(function (member) { %>
       <a class="list-group-item" href="/#users/<%= member.id %>"><%= member.escape('username') %>, <%= member.escape('membership_type')%></a>
     <% }); %>
   </div>
 </div>
+
+<!-- New Member Modal -->
+
+<div id="new-member-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= club.escape('club_name')%></h4>
+      </div>
+      <div id="new-member-modal-body" class="modal-body">
+        <form id="new-member-form">
+          <div class="form-group">
+            <label for="content">Kids not currently in this club</label>
+            <br/>
+            <textarea name="content" rows="10" cols="70" placeholder="ex: This book has great characters and is fun to read."></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" id="new-member-submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

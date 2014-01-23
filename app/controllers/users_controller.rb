@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_filter :require_current_user!, :only => [:show, :edit, :update]
-  before_filter :require_no_current_user!, :only => [:create, :new]
 
   def index
     if logged_in?
@@ -15,8 +14,16 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      self.current_user = @user
-      redirect_to root_url
+      if !logged_in?
+        self.current_user = @user
+        redirect_to root_url
+      else
+        @parent_child_relationship = ParentChildRelationship.create!(
+        parent_id: current_user.id,
+        child_id: @user.id
+        )
+        render :json => @user
+      end
     else
       render :json => @user.errors.full_messages, :status => 422
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140122003601) do
+ActiveRecord::Schema.define(:version => 20140123194445) do
 
   create_table "activity_streams", :force => true do |t|
     t.integer  "user_id"
@@ -120,9 +120,9 @@ ActiveRecord::Schema.define(:version => 20140122003601) do
   create_table "users", :force => true do |t|
     t.integer  "user_type_id",    :null => false
     t.string   "username",        :null => false
-    t.string   "email",           :null => false
+    t.string   "email"
     t.string   "first_name",      :null => false
-    t.string   "last_name",       :null => false
+    t.string   "last_name"
     t.string   "city"
     t.string   "state"
     t.date     "birthday"

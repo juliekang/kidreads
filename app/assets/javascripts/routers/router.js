@@ -15,11 +15,9 @@ KR.Routers.Router = Backbone.Router.extend({
   },
 
   root: function () {
-    console.log("root!")
     var that = this;
 
     if (KR.currentUserID) {
-      console.log("current user!")
       KR.activityStreams.fetch({
         success: function () {
           var view = new KR.Views.ActivityStreamsIndex({

@@ -3,7 +3,7 @@ class Kr::ReviewsController < ApplicationController
   before_filter :require_current_user!
 
   def index
-    @reviews = current_user.reviews
+    @reviews = current_user.reviews.includes(:user)
   end
 
   def create

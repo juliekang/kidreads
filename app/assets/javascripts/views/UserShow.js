@@ -51,6 +51,9 @@ KR.Views.UserShow = Backbone.View.extend({
   },
 
   _calcAge: function (birthday) {
+    if (!birthday) {
+      return 'Infinity'; 
+    }
     return ~~((Date.now() - new Date(birthday)) / (31557600000));
   }
 });

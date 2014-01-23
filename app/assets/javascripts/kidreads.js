@@ -24,7 +24,6 @@ window.KR = {
       booksFetch, clubsFetch, reviewsFetch, kidsFetch, activityStreamsFetch
     ).then(function () {
         new KR.Routers.Router({ $rootEl: $('#kr_pane') });
-        console.log("routers!")
         Backbone.history.start();      
     });
   }
