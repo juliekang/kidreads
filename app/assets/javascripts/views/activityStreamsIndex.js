@@ -12,8 +12,6 @@ KR.Views.ActivityStreamsIndex = Backbone.View.extend({
     var renderedContent = this.template({
       streams: this.collection
     });
-    var that = this;
-
     this.$el.html(renderedContent);
 
     return this;

@@ -28,17 +28,6 @@ KR.Routers.Router = Backbone.Router.extend({
           that._swapView(view);      
         }
       });
-    } else {
-      console.log("new user!")
-
-      KR.randomBooks = new KR.Collection.Books();
-      for(var i = 0; i < 100; i++) {
-        KR.randomBooks.add(this._randomBook)
-      }
-      var view = new KR.Views.SplashPage({
-        collection: KR.randomBooks
-      });
-      this._swapView(view);
     }
   },
 
