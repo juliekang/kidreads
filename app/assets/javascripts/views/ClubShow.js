@@ -50,7 +50,6 @@ KR.Views.ClubShow = Backbone.View.extend({
       membership = new KR.Models.ClubMembership(membership);
       membership.save([], {
         success: function (membership) {
-          console.log("membership " + membership.id + "saved");
           that.model.members().fetch({
             success: function () {
               var member = KR.kids.get(memberID);
