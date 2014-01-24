@@ -3,23 +3,23 @@
 
 App Academy Student Final Project by Julie Kang.   
 Single-Page book sharing app inspired by GoodReads.   
-Backbone.js on Rails, styled with Twitter Bootstrap using the Amelia template from Bootswatch.    
+Backbone.js on Rails, styled with Twitter Bootstrap using [the Amelia template from Bootswatch] (http://bootswatch.com/amelia/).    
 Developed in 7 Days.   
 http://www.kidreads.org/ for a demo.   
 
 ### Screenshots
 
 Splash Page:   
-<img width="500" src="http://imgur.com/G3rOr7j">
+![Splash Page](http://i.imgur.com/G3rOr7j.png)
 
 Activity Stream showing events by your children, parents, and members of clubs you are in:   
-<img width="500" src="http://imgur.com/fGB9qfS">
+![Activity Stream](http://i.imgur.com/fGB9qfS.png)
 
 Book Detail Page:   
-<img width="500" src="http://imgur.com/YxolVC4">
+![Book Detail Page](http://i.imgur.com/YxolVC4.png)
 
 Parents can create clubs and add their children:   
-<img width="500" src="http://imgur.com/kdMeZYw">
+![New Club Modal](http://i.imgur.com/kdMeZYw.png)
 
 ###TODO:
 
