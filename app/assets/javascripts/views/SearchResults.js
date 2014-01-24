@@ -10,12 +10,16 @@ KR.Views.SearchResults = Backbone.View.extend({
 
     this.$el.html(renderedContent);
 
-    this.collection.each(function (book) {
-      var view = new KR.Views.BookListItem({
-        model: book
+    if(this.collection.length == 0) {
+      this.$el.append("<p>Your search returned 0 results.</p>");
+    } else {
+      this.collection.each(function (book) {
+        var view = new KR.Views.BookListItem({
+          model: book
+        });
+        that.$('#result_list').append(view.render().$el);
       });
-      that.$('#result_list').append(view.render().$el);
-    });
+    }
 
     return this;
   }

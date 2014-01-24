@@ -9,7 +9,7 @@ KR.Views.Header = Backbone.View.extend({
   template: JST["root/header"],
 
   initialize: function () {
-    this.listenTo(KR.clubs, "add remove reset", this.render);
+    this.listenTo(KR.clubs, "all", this.render);
     this.listenTo(KR.books, "all", this.render);
     this.listenTo(KR.kids, "all", this.render);
   },
@@ -40,12 +40,14 @@ KR.Views.Header = Backbone.View.extend({
 
     club = KR.clubs.create(club, { 
       success: function (club) {
+        club.fetch();
         KR.activityStreams.create({
           url: "/#clubs/" + club.id,
           activity_verb: 'added',
           activity_object: 'a club:',
           club_name: club.get('club_name')   
         });
+        Backbone.history.navigate('clubs/' + club.id, {trigger: true}); 
       }
     });
     $("#new-club-modal").modal('hide');
@@ -60,14 +62,15 @@ KR.Views.Header = Backbone.View.extend({
 
     kid = KR.kids.create(kid, { 
       success: function (kid) {
+        kid.fetch();
         KR.activityStreams.create({
           url: "/#users/" + kid.id,
           activity_verb: 'added',
           activity_object: 'a kid: ' + kid.get('first_name')
         });
+        Backbone.history.navigate('users/' + kid.id, {trigger: true}); 
       }
     });
-    kid.fetch();
     $("#new-kid-modal").modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();

@@ -21,18 +21,19 @@
 
   <body>
     <div class="container">
-      <% if current_user && current_user.email == "kidreadsdotorg@gmail.com" %>
+      <% if current_user && current_user.username == "demoaccount" %>
         <div id="account-banner" class="alert alert-info">
-          <big>Like what you see?&nbsp;&nbsp;&nbsp;<a href="/users/new">Create your own account.</a></big>
+          <big>Like what you see?&nbsp;&nbsp;&nbsp;<a id="log-out-please" href="/users/new">Create your own account.</a></big>
         </div>
       <% end %>
 
       <%= render :partial => "layouts/errors" %>
-      
+
       <div id="header"></div>
 
       <%= yield %>
 
     </div> <!-- container -->
   </body>
+
 </html>

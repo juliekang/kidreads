@@ -11,10 +11,11 @@ class UsersController < ApplicationController
   end
 
   def create
+    logout_current_user! if current_user.guest? && !creating_kid?
     @user = User.new(params[:user])
 
     if @user.save
-      if !logged_in? || current_user.email == "kidreadsdotorg@gmail.com"
+      if !creating_kid?
         self.current_user = @user
         redirect_to root_url
       else
@@ -56,6 +57,11 @@ class UsersController < ApplicationController
     redirect_to edit_user_url(current_user.id) if params[:id] != current_user.id.to_s
     @user = current_user
     @user_types = UserType.all
+  end
+
+  private
+  def creating_kid?
+    params[:user_type_id].to_i == 1
   end
 
 end

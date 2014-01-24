@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def guest?
+    self.username == "demoaccount"
+  end
+
   def activity_stream_objects
     parent_ids = parents.pluck(:id)
     child_ids = children.pluck(:id)
