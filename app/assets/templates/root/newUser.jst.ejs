@@ -1,0 +1,21 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-xs-8">
+      <h2>We love new users!</h2>
+      <p>Ready to begin?  Let's start by searching for some books.</p>
+      <p>Once you land on the book page, just rate them and add them to a list!</p>
+      <form role="search" id="newUserSearchbox" action="/search/query" method="GET">
+        <div class="form-group">
+          <label for="filter">Filter by: </label>
+          <input type="radio" name="filter" value="title" checked>Title
+          <input type="radio" name="filter" value="author">Author
+          <input type="text" class="form-control" name="q" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+    <div class="col-xs-2 col-xs-offset-1">
+      <img src="/assets/magnifying_glass.png" style="height:auto; width:auto; max-height:200px;">
+    </div>
+  </div>
+</div>

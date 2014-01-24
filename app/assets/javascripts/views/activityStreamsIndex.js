@@ -1,5 +1,5 @@
 KR.Views.ActivityStreamsIndex = Backbone.View.extend({
-  events: {
+  events: {  
   },
 
   template: JST["activityStreams/index"],
@@ -14,6 +14,10 @@ KR.Views.ActivityStreamsIndex = Backbone.View.extend({
     });
     this.$el.html(renderedContent);
 
+    if (this.collection.length == 0) {
+      var view = new KR.Views.NewUserView();
+      this.$el.append(view.render().$el);
+    }
     return this;
   }
 });

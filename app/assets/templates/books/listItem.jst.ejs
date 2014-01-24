@@ -1,4 +1,4 @@
 <a class="list-group-item" data-id="<%= book.escape('id') %>" href="/#books/<%= book.escape('id') %>"><img src="<%= book.escape('image_url') %>"/>
-<%= book.escape('title') %>
+<%= book.escape('title') %>, by <%= book.escape('author') %>
 <div id="book_data"></div>
 </a>

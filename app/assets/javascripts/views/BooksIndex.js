@@ -13,24 +13,29 @@ KR.Views.BooksIndex = Backbone.View.extend({
     var that = this;
 
     this.$el.html(renderedContent);
-    this.collection.each(function (book) {
-      var view = new KR.Views.BookListItem({
-        model: book
+
+    if (this.collection.length == 0) {
+      var view = new KR.Views.NewUserView();
+      this.$el.prepend(view.render().$el);
+    } else {
+      this.collection.each(function (book) {
+        var view = new KR.Views.BookListItem({
+          model: book
+        });
+
+        var status = book.book_status().get('status');
+
+        if(status == 'current') {
+          that.$('#current').append(view.render().$el);
+        } else if(status == 'read') {
+          that.$('#read').append(view.render().$el);
+        } else if(status == 'wish') {
+          that.$('#wish').append(view.render().$el);
+        } else {
+          that.$('#randoms').append(view.render().$el);
+        }
       });
-
-      var status = book.book_status().get('status');
-
-      if(status == 'current') {
-        that.$('#current').append(view.render().$el);
-      } else if(status == 'read') {
-        that.$('#read').append(view.render().$el);
-      } else if(status == 'wish') {
-        that.$('#wish').append(view.render().$el);
-      } else {
-        that.$('#randoms').append(view.render().$el);
-      }
-    });
-
+    }
     return this;
   }
 });

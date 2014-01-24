@@ -15,6 +15,7 @@ end
 json.books(@user.books) do |book|
   json.id book.id
   json.title book.title
+  json.author book.author
   json.image_url book.image_url
   json.book_status BookStatus.find_by_user_id_and_book_id(@user.id, book.id)
 end
