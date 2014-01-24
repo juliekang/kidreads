@@ -25,7 +25,10 @@ class UsersController < ApplicationController
         render :json => @user
       end
     else
-      render :json => @user.errors.full_messages, :status => 422
+      flash[:errors] = @user.errors.full_messages
+      @user_types = UserType.all
+      render :new
+
     end
   end
 
