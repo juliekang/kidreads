@@ -16,13 +16,14 @@
         KR.initialize();
       }); 
     </script>
+
   </head>
 
   <body>
     <div class="container">
       <% if current_user && current_user.email == "kidreadsdotorg@gmail.com" %>
-        <div class="alert alert-info">
-          <big>Like what you see?  <a href="/users/new">Create your own account.</a></big>
+        <div id="account-banner" class="alert alert-info">
+          <big>Like what you see?&nbsp;&nbsp;&nbsp;<a href="/users/new">Create your own account.</a></big>
         </div>
       <% end %>
 
@@ -30,6 +31,6 @@
 
       <%= yield %>
 
-    </div>
+    </div> <!-- container -->
   </body>
 </html>
