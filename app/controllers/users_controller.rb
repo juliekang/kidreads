@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      if !logged_in?
+      if !logged_in? || current_user.email == "kidreadsdotorg@gmail.com"
         self.current_user = @user
         redirect_to root_url
       else

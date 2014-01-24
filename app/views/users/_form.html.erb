@@ -16,6 +16,7 @@
     <label for="user_user_type">Type of Account</label>
     <% @user_types.each do |type| %>
     <br/>
+    <% next if type.id == 1 %>
     <input name="user[user_type_id]" 
     value="<%= type.id %>"
     id="user_user_type"
