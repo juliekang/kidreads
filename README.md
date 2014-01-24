@@ -1,11 +1,25 @@
 # KidReads
-## A place to discover, discuss, and share children's books.
+### A place to discover, discuss, and share children's books.
 
-App Academy Student Final Project by Julie Kang.
-Single-Page book sharing app inspired by GoodReads.
+App Academy Student Final Project by Julie Kang.   
+Single-Page book sharing app inspired by GoodReads.   
 Backbone.js on Rails.    
-Developed in 6 Days.
-http://kidreads.herokuapp.com/ for a demo.
+Developed in 7 Days.   
+http://www.kidreads.org/ for a demo.   
+
+### Screenshots
+
+Splash Page:
+<img width="600" src="https://www.dropbox.com/s/8kjjgkv6xf0j3pv/Screenshot%202014-01-23%2020.18.35.png">
+
+Activity Stream showing events by your children, parents, and members of clubs you are in:
+<img width="600" src="https://www.dropbox.com/s/922ix7z06ylof1i/Screenshot%202014-01-23%2020.21.31.png">
+
+Book Detail Page:
+<img width="600" src="https://www.dropbox.com/s/xtkivsbqs4c1sp1/Screenshot%202014-01-23%2020.29.07.png">
+
+Parents can create clubs and add their children:
+<img width="600" src="https://www.dropbox.com/s/c8j14ujeu1v04f9/Screenshot%202014-01-23%2020.33.04.png">
 
 ###TODO:
 
