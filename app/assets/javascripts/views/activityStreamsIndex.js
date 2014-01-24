@@ -5,7 +5,7 @@ KR.Views.ActivityStreamsIndex = Backbone.View.extend({
   template: JST["activityStreams/index"],
 
   initialize: function () {
-    this.listenTo(this.collection, "add remove reset", this.render);
+    this.listenTo(this.collection, "all", this.render);
   },
 
   render: function () {

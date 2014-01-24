@@ -65,7 +65,6 @@ KR.Views.Header = Backbone.View.extend({
           activity_verb: 'added',
           activity_object: 'a kid: ' + kid.get('first_name')
         });
-        console.log('activity stream created')
       }
     });
     kid.fetch();

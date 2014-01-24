@@ -7,7 +7,7 @@
     <div id="rating"></div>
     <br/>
     <p><b>GoodReads Rating: </b><%= book.escape('rating') %> <em>(<%= book.escape('ratings_count') %> ratings)</em></p>
-    <form id="add-to-lists">
+    <form data-toggle="popover" data-placement="right" id="add-to-lists">
       <label for="list-selector">Add to List</label>
       <select id="list-selector">
         <option value=""></option>

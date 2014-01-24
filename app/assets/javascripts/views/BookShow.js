@@ -52,11 +52,17 @@ KR.Views.BookShow = Backbone.View.extend({
 
   listSelected: function (event) {
     event.preventDefault();
+    var that = this;
     var statusVal = $(event.target).val();
 
     var newOrExistingStatus = this.model.book_status();
     newOrExistingStatus.set({status: statusVal, book_id: this.model.id});
-    newOrExistingStatus.save();
+    newOrExistingStatus.save({
+      success: function () {
+        console.log("Saved!")
+        that.$("#add-to-lists").popover({content: "Saved!", delay: { show: 500, hide: 100 }});
+      }
+    });
 
     var verb = '';
 
@@ -107,6 +113,7 @@ KR.Views.BookShow = Backbone.View.extend({
     this.model.reviews().add(review, {merge: true});
     review.save({}, {
       success: function (review) {
+
         KR.activityStreams.create({
           url: "/#books/" + that.model.id,
           activity_verb: "reviewed",

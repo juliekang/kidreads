@@ -27,7 +27,12 @@
           <div class="form-group">
             <label for="content">Kids not currently in this club</label>
             <br/>
-            <textarea name="content" rows="10" cols="70" placeholder="ex: This book has great characters and is fun to read."></textarea>
+            <% remainders.each( function (remainder) { %>
+              <div class="checkbox">
+                <label for="member_id<%= remainder.id %>"><%= remainder.get('first_name') %></label>
+                <input name="members[]" id="member_id<%= remainder.id   %>" value="<%= remainder.id %>" type="checkbox">
+              </div>
+            <% }) %>
           </div>
         </form>
       </div>

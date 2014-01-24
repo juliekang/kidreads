@@ -1,18 +1,24 @@
 KR.Views.ClubShow = Backbone.View.extend({
-  events: {},
+  events: {
+    "click button#new-member-submit" : "submitMember",
+  },
   
   template: JST["clubs/show"],
 
+  initialize: function () {
+    this.listenTo(this.model.members(), "all", this.render)
+  },
+
   render: function () {
     var renderedContent = this.template({
-      club: this.model
+      club: this.model,
+      remainders: this._remainingKids()
     });
     
     this.$el.html(renderedContent);
     
     var view = new KR.Views.ActivityStreamsIndex({
       collection: this.model.club_streams(),
-      remainders: this._remainingKids()
     });
     this.$("#club_streams").html(view.render().$el);
 
@@ -22,18 +28,42 @@ KR.Views.ClubShow = Backbone.View.extend({
   _remainingKids: function () {
     var kids = KR.kids.clone();
     var members = this.model.members().clone();
+    var remainders = []
 
-    var remainder = kids.map(function (kid) {
+    kids.map(function (kid) {
       var member = members.get(kid.id);
       if(!member) {
-              console.log("there is a remainder!" + kid.id)
-
-        return member.toJSON();
+        remainders.push(kid);
       }
     });
+    return new KR.Collections.Users(remainders);
+  },
 
-    console.log(remainder);
-    return remainder;
+  submitMember: function (event) {
+    var that = this;
+    event.preventDefault();
+    var memberIDs = $('#new-member-form').serializeJSON().members;
+
+    memberIDs.forEach(function (memberID) {
+      var membership = { member_id: memberID, club_id: that.model.id, membership_type: "kid" };
+
+      membership = new KR.Models.ClubMembership(membership);
+      membership.save([], {
+        success: function (membership) {
+          console.log("membership " + membership.id + "saved");
+          that.model.members().fetch({
+            success: function () {
+              var member = KR.kids.get(memberID);
+              that.model.members().add(member);
+            }
+          });
+        }     
+      });
+    });
+    
+    $("#new-member-modal").modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();  
   }
   
 });
