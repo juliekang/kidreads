@@ -8,7 +8,7 @@
   <div class="col-xs-3 list-group">
     <h4>Member Roster <button id="new-member-button" data-toggle="modal" data-target="#new-member-modal" class="btn btn-primary">Add Member</button></h4>
     <% club.members().each(function (member) { %>
-      <a class="list-group-item" href="/#users/<%= member.id %>"><%= member.escape('username') %>, <%= member.escape('membership_type')%></a>
+      <a class="list-group-item" href="/#users/<%= member.id %>"><%= member.escape('first_name') %>, <%= member.escape('membership_type')%></a>
     <% }); %>
   </div>
 </div>
