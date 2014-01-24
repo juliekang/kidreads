@@ -15,5 +15,9 @@ KR.Models.User = Backbone.Model.extend({
       this._books = new KR.Collections.Books([]);
     }
     return this._books;
+  },
+
+  defaults: {
+    "membership_type": "kid"
   }
 });
