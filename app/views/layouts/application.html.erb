@@ -6,6 +6,7 @@
     <%= stylesheet_link_tag    "//netdna.bootstrapcdn.com/bootswatch/3.0.3/amelia/bootstrap.min.css" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <% currentRole = current_user.user_type.label if current_user %>
     <% currentUserID = current_user ? current_user.id : "null" %>
     <script>$(function () { 
