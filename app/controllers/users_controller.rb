@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    logout_current_user! if current_user.guest? && !creating_kid?
+    logout_current_user! if current_user && current_user.guest? && !creating_kid?
     @user = User.new(params[:user])
 
     if @user.save
